@@ -1,0 +1,1 @@
+"https://ws.ujep.cz/ws/login?originalURL=http://localhost:8501"

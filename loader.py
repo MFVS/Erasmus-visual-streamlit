@@ -51,48 +51,42 @@ def get_url(new_schools:pl.DataFrame, url_source:pl.DataFrame) -> pl.DataFrame:
 
 # Funkce která přidává geografické koordinace (aka zdroj všeho zla)
 def get_coords(new_schools:pl.DataFrame, address_source:pl.DataFrame) -> pl.DataFrame:
+    print("Získávám geokoordinace. Prosím, počkejte chvíli, tohle bude trvat.")
     # Mějme jen kódy škol a adresy
     address_source = address_source.join(new_schools.select("ERASMUS CODE", "Univerzita"), "ERASMUS CODE", "inner")
     address_source.write_excel("addresses.xlsx")
 
     # Vytvoření clienta geolokátoru
-    geolocator = Nominatim(user_agent="matej@sloupovi.info") # I hate everything
+    geolocator = Nominatim(user_agent="matej@sloupovi.info") # NOTE: Tohle používá můj osobní účet. To není uplně ideální (jinak řečeno, this fuckin sucks).
 
     # Získání koordinací
+    # Kolo 1
     names = address_source.to_series(address_source.get_column_index("Univerzita")).to_list()
     unis = address_source.to_series(address_source.get_column_index("ERASMUS CODE")).to_list()
-    
     loc_dicts = {uni:name for uni,name in zip(unis, names)}
     relocations = {uni:geolocator.geocode(loc_dicts[uni]) for uni in unis}
-    df_maker = {"ERASMUS CODE":[], "Longtitude":[],"Latitude":[]}
 
+    # Kolo 2: Spravení (některých) None hodnot
     fixes = [uni for uni in unis if relocations[uni] == None]
-    #address_source = address_source.filter(pl.col("ERASMUS CODE").is_in(fixes))
-    locations = {uni:loc for uni,loc in zip(unis, address_source.to_series(address_source.get_column_index("Address")).to_list())}
+    locations = {uni:loc for uni,loc in zip(unis, address_source.to_series(address_source.get_column_index("Address")).to_list())} #NOTE: This makes me cry
     loc_dicts = {uni:{"street":locations[uni][0], "city":locations[uni][1], "country":locations[uni][2]} for uni in fixes}
     for uni in fixes:
         relocations[uni] = geolocator.geocode(loc_dicts[uni])
 
     # Přidání koordinací do df
+    df_maker = {"ERASMUS CODE":[], "Longtitude":[],"Latitude":[]}
     for loc in relocations.keys():
         df_maker["ERASMUS CODE"].append(loc)
         df_maker["Longtitude"].append(str(relocations[loc].longitude) if relocations[loc] != None else None)
         df_maker["Latitude"].append(str(relocations[loc].latitude) if relocations[loc] != None else None)
         reloc_info = f"{relocations[loc]} ({relocations[loc].latitude}, {relocations[loc].longitude})" if relocations[loc] != None else None
         log.info(f"{loc} - {reloc_info}")
-    log.info(relocations)
-    #log.info(relocations.count(None))
     return new_schools.join(pl.from_dict(df_maker), "ERASMUS CODE", "left")
 
-def geocord_test():
-    geolocator = Nominatim(user_agent="matej@sloupovi.info")
-
-   
-
-def main() -> None:
+def table_overwriter(excel_file) -> None:
     # Načítání
     current_schools = pl.read_excel("schools.xlsx")
-    new_schools = pl.read_excel(easygui.fileopenbox("Vyberte soubor s novými školami: ", "Hi", filetypes="*.xlsx"))
+    new_schools = pl.read_excel(excel_file)
     addresses = pl.read_excel("url_gen.xlsx").rename({"Erasms Code":"ERASMUS CODE"}).with_columns(pl.concat_list(pl.col("Street"), pl.col("City"), pl.col("Country Cd")).alias("Address")).select("ERASMUS CODE", "Website Url", "Address")
     log.info("Tables read successfully.")
 
@@ -116,11 +110,11 @@ def main() -> None:
     log.info(new_schools.head())
 
     # Mergování a zápis
+    current_schools = current_schools.drop("Longtitude", "Latitude")
     new_schools = new_schools.select(current_schools.columns)
-    current_schools.join(new_schools, "ERASMUS CODE", "anti").vstack(new_schools, in_place=True).write_excel("schools.xlsx")
+    current_schools.join(new_schools, "ERASMUS CODE", "anti").vstack(new_schools, in_place=True).write_excel("schools_debug.xlsx")
     log.info("Done!")
-
     
 
 if __name__ == "__main__":
-    main()
+    table_overwriter(easygui.fileopenbox("Vyberte soubor s novými školami: ", "Hi", filetypes="*.xlsx"))
