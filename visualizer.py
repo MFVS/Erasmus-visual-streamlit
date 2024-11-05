@@ -2,7 +2,14 @@ import streamlit as st
 import polars as pl
 import folium as fo
 from streamlit_folium import st_folium
+import os.path
 from typing import Dict, List
+
+if not os.path.exists("schools.xlsx"):
+    st.error("Neexistuje seznam škol. První jej vytvořte v administrátorských nástrojích.")
+    if st.button("Přechod na admin tools"):
+        st.switch_page("pages/1_admin.py")
+    st.stop()
 
 
 schools_source = pl.read_excel("schools.xlsx")

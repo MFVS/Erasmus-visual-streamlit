@@ -2,6 +2,7 @@ import polars as pl
 import easygui
 import logging as log
 from geopy.geocoders import Nominatim
+import os.path
 from typing import Dict, List
 
 # Nastavení logování NOTE: Log se ukládá do loader_log.txt
@@ -83,9 +84,13 @@ def get_coords(new_schools:pl.DataFrame, address_source:pl.DataFrame) -> pl.Data
         log.info(f"{loc} - {reloc_info}")
     return new_schools.join(pl.from_dict(df_maker), "ERASMUS CODE", "left")
 
-def table_overwriter(excel_file) -> None:
+def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a následně vrátí počet řádků s nevalidními koordinacemi
     # Načítání
-    current_schools = pl.read_excel("schools.xlsx")
+    current_schools = pl.DataFrame()
+    if not os.path.exists():
+        current_schools = pl.from_dict({"ERASMUS CODE":[], "Univerzita":[], "Město":[], "Stát":[], "Longtitude":[], "Latitude":[], "URL":[], "Obory":[]})
+    else:
+        current_schools = pl.read_excel("schools.xlsx")
     new_schools = pl.read_excel(excel_file)
     addresses = pl.read_excel("url_gen.xlsx").rename({"Erasms Code":"ERASMUS CODE"}).with_columns(pl.concat_list(pl.col("Street"), pl.col("City"), pl.col("Country Cd")).alias("Address")).select("ERASMUS CODE", "Website Url", "Address")
     log.info("Tables read successfully.")
@@ -114,7 +119,48 @@ def table_overwriter(excel_file) -> None:
     new_schools = new_schools.select(current_schools.columns)
     current_schools.join(new_schools, "ERASMUS CODE", "anti").vstack(new_schools, in_place=True).write_excel("schools_debug.xlsx")
     log.info("Done!")
+
+    return len(new_schools.filter(pl.col("Longtitude").is_null() | pl.col("Latitude").is_null()))
+
+# ------
+def parseLines(excel_file:any) -> List[str]:
+    log.info("Starting file parsing by ascertaining file input type.")
+    if type(excel_file) != str:
+        try:
+            excel_file = excel_file.name
+        except:
+            log.info("Type determination failed at input type determination. Throwing error.")
+            raise ValueError("File has been inputted via an illegal method.")
+        
+    log.info(excel_file)
+    
+    match excel_file.split(".")[-1]:
+        case "xlsx":
+            log.info("File is an excel file.")
+            buffer = pl.read_excel(excel_file)
+            return buffer.to_series(buffer.get_column_index("ERASMUS CODE")).to_list()
+        case "txt":
+            log.info("File is a text file.")
+            with open(excel_file, "r") as txtfile:
+                return txtfile.read().split('\n')
+        case _:
+            log.info("Uh oh.")
+            raise ValueError("File is of an unreadable format.")
+    
+
+def table_eraser(excel_file) -> int:
+    if not os.path.exists("schools.xlsx"):
+        raise FileNotFoundError("First, make sure to have some schools.")
+    log.info("Starting eraser.")
+    lines:List[str] = parseLines(excel_file)
+    current_schools = pl.read_excel("schools.xlsx")
+    curLen = len(current_schools)
+    current_schools = current_schools.filter(pl.col("ERASMUS CODE").is_in(lines).not_())
+    current_schools.write_excel("schools.xlsx")
+    log.info("Eraser finished correctly.")
+    return curLen - len(current_schools)
     
 
 if __name__ == "__main__":
-    table_overwriter(easygui.fileopenbox("Vyberte soubor s novými školami: ", "Hi", filetypes="*.xlsx"))
+    #table_overwriter(easygui.fileopenbox("Vyberte soubor s novými školami: ", "Hi", filetypes="*.xlsx"))
+    table_eraser(easygui.fileopenbox("Vybere soubor obsahující školy k vymazání.", filetypes=["*.xlsx", "*.txt"]))
