@@ -16,6 +16,23 @@ Akutální web verze (NEREFLEKTUJE AKTUALIZACE): erasmus-proto.streamlit.app
 - Přístup k dalším souborům and whatnot
 - Sepsat sem všechno ostatní co spravit/přidat
 
+### to-do 7. týden
+- **Excel tabulka**
+    - kódy oborů ... přidat do sloupce do schools.xlsx
+    - názvy univerzit ... vzít ty "oficiální", ne ty co byly zadány v ujepáckém souboru
+    - sloučení názvů oborů ... zbavit se d.n. a j.n. atd.
+    - kód univerzity ... nebo smlouvy whatever, přidat jako sloupec
+
+- **visualizer.py**
+  - přidat katedry do filtru (řazení - katedra, obor, stát)
+  - barvičky ... sjednotit / nápad výrazná barva pro 3 a více oborů, zbytek modro zelená
+
+- **loader.py**
+  - podmínka kód katedry =! STORNO ... zbavit se ukončených smluv
+  - url ... přidat před každý vygenerovaný odkaz "http://"
+ 
+  
+
 ## Experimentální funkce: Admin tools
 ### Jak se k nim dostat
 1) Přejděte na AdminAccessContingency větev v gitu
