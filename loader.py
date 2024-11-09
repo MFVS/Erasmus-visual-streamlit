@@ -76,10 +76,10 @@ def get_coords(new_schools:pl.DataFrame, address_source:pl.DataFrame) -> pl.Data
         relocations[uni] = geolocator.geocode(loc_dicts[uni])
 
     # Přidání koordinací do df
-    df_maker = {"ERASMUS CODE":[], "Longtitude":[],"Latitude":[]}
+    df_maker = {"ERASMUS CODE":[], "Longitude":[],"Latitude":[]}
     for loc in relocations.keys():
         df_maker["ERASMUS CODE"].append(loc)
-        df_maker["Longtitude"].append(str(relocations[loc].longitude) if relocations[loc] != None else None)
+        df_maker["Longitude"].append(str(relocations[loc].longitude) if relocations[loc] != None else None)
         df_maker["Latitude"].append(str(relocations[loc].latitude) if relocations[loc] != None else None)
         reloc_info = f"{relocations[loc]} ({relocations[loc].latitude}, {relocations[loc].longitude})" if relocations[loc] != None else None
         log.info(f"{loc} - {reloc_info}")
@@ -89,7 +89,7 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     # Načítání
     current_schools = pl.DataFrame()
     if not os.path.exists("schools.xlsx"):
-        current_schools = pl.from_dict({"ERASMUS CODE":[], "Univerzita":[], "Město":[], "Stát":[], "Longtitude":[], "Latitude":[], "URL":[], "Obory":[]})
+        current_schools = pl.from_dict({"ERASMUS CODE":[], "Univerzita":[], "Město":[], "Stát":[], "Longitude":[], "Latitude":[], "URL":[], "Obory":[]})
     else:
         current_schools = pl.read_excel("schools.xlsx")
     new_schools = pl.read_excel(excel_file)
@@ -116,12 +116,12 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     log.info(new_schools.head())
 
     # Mergování a zápis
-    #current_schools = current_schools.drop("Longtitude", "Latitude")
+    #current_schools = current_schools.drop("Longitude", "Latitude")
     new_schools = new_schools.select(current_schools.columns)
     current_schools.join(new_schools, "ERASMUS CODE", "anti").vstack(new_schools, in_place=True).write_excel("schools.xlsx")
     log.info("Done!")
 
-    return len(new_schools.filter(pl.col("Longtitude").is_null() | pl.col("Latitude").is_null()))
+    return len(new_schools.filter(pl.col("Longitude").is_null() | pl.col("Latitude").is_null()))
 
 # ------
 def parseLines(excel_file:any) -> List[str]:
