@@ -1,95 +1,96 @@
-2024-11-06 20:51 - INFO - Tables read successfully.
-2024-11-06 20:51 - INFO - Columns united.
-2024-11-06 20:51 - INFO - ['Univerzita', 'ERASMUS CODE', 'Město', 'Stát', 'Obor', 'Název']
-2024-11-06 20:51 - INFO - Renamed cols.
-2024-11-06 20:51 - INFO - shape: (5, 5)
-┌─────────────────────────────────┬──────────────┬───────────┬──────────────────────┬─────────────────────────────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město     ┆ Stát                 ┆ Obory                           │
-│ ---                             ┆ ---          ┆ ---       ┆ ---                  ┆ ---                             │
-│ str                             ┆ str          ┆ str       ┆ str                  ┆ str                             │
-╞═════════════════════════════════╪══════════════╪═══════════╪══════════════════════╪═════════════════════════════════╡
-│ Akdeniz Üniversitesi            ┆ TR ANTALYA01 ┆ Antalya   ┆ Turecká republika    ┆ Biologické a příbuzné vědy      │
-│ ALANYA UNIVERSITY               ┆ TR ANTALYA04 ┆ Alanya    ┆ Turecká republika    ┆ Informační a komunikační techn… │
-│ ALGEBRA UNIVERSITY COLLEGE      ┆ HR ZAGREB11  ┆ ZAGREB    ┆ Chorvatská republika ┆ Informační a komunikační techn… │
-│ Canakkale Onsekiz Mart Ünivers… ┆ TR CANAKKA01 ┆ Canakkale ┆ Turecká republika    ┆ Biologické a příbuzné vědy – o… │
-│ Dokuz Eylül Üniversitesi, Izmi… ┆ TR IZMIR01   ┆ Izmir     ┆ Turecká republika    ┆ Biologické a příbuzné vědy      │
-└─────────────────────────────────┴──────────────┴───────────┴──────────────────────┴─────────────────────────────────┘
-2024-11-06 20:51 - INFO - Fetched url.
-2024-11-06 20:51 - INFO - shape: (5, 6)
-┌─────────────────────────────────┬──────────────┬───────────┬──────────────────────┬─────────────────────────────────┬─────────────────────────────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město     ┆ Stát                 ┆ Obory                           ┆ URL                             │
-│ ---                             ┆ ---          ┆ ---       ┆ ---                  ┆ ---                             ┆ ---                             │
-│ str                             ┆ str          ┆ str       ┆ str                  ┆ str                             ┆ str                             │
-╞═════════════════════════════════╪══════════════╪═══════════╪══════════════════════╪═════════════════════════════════╪═════════════════════════════════╡
-│ Akdeniz Üniversitesi            ┆ TR ANTALYA01 ┆ Antalya   ┆ Turecká republika    ┆ Biologické a příbuzné vědy      ┆ http://www.akdeniz.edu.tr       │
-│ ALANYA UNIVERSITY               ┆ TR ANTALYA04 ┆ Alanya    ┆ Turecká republika    ┆ Informační a komunikační techn… ┆ https://www.alanyauniversity.e… │
-│ ALGEBRA UNIVERSITY COLLEGE      ┆ HR ZAGREB11  ┆ ZAGREB    ┆ Chorvatská republika ┆ Informační a komunikační techn… ┆ https://www.algebra.hr          │
-│ Canakkale Onsekiz Mart Ünivers… ┆ TR CANAKKA01 ┆ Canakkale ┆ Turecká republika    ┆ Biologické a příbuzné vědy – o… ┆ www.comu.edu.tr                 │
-│ Dokuz Eylül Üniversitesi, Izmi… ┆ TR IZMIR01   ┆ Izmir     ┆ Turecká republika    ┆ Biologické a příbuzné vědy      ┆ http://www.deu.edu.tr           │
-└─────────────────────────────────┴──────────────┴───────────┴──────────────────────┴─────────────────────────────────┴─────────────────────────────────┘
-2024-11-06 20:51 - INFO - I  URBINO01 - Sede centrale Università degli Studi di Urbino Carlo Bo, Viale Ferdinando Salvalai, Urbino, Pesaro e Urbino, Marche, 61029, Italia (43.7232299, 12.6366992)
-2024-11-06 20:51 - INFO - PL OPOLE01 - Uniwersytet Opolski, 48, Oleska, Śródmieście, Opole, województwo opolskie, 45-052, Polska (50.673363949999995, 17.93144882718738)
-2024-11-06 20:51 - INFO - SK RUZOMBE01 - Katolícka univerzita v Ružomberku - Pedagogická fakulta, 15, Bottova, Levoča, okres Levoča, Prešovský kraj, Východné Slovensko, 054 01, Slovensko (49.0223689, 20.5875762)
-2024-11-06 20:51 - INFO - TR ANTALYA01 - Akdeniz Üniversitesi, Dumlupınar Bulvarı, Pınarbaşı Mahallesi, Konyaaltı, Antalya, Akdeniz Bölgesi, 07090, Türkiye (36.8937844, 30.650947292742977)
-2024-11-06 20:51 - INFO - D  GIESSEN01 - Justus-Liebig-Universität - Campusbereich Philosophikum II, 10, Otto-Behaghel-Straße, Schiffenberger Tal, Gießen, Linden, Landkreis Gießen, Hessen, 35394, Deutschland (50.573589150000004, 8.699976819474603)
-2024-11-06 20:51 - INFO - TR ANTALYA04 - Alanya Alaaddin Keykubat Üniversitesi, Atatürk Cd., Kestel, Alanya, Antalya, Akdeniz Bölgesi, 07460, Türkiye (36.52653915, 32.0844180072318)
-2024-11-06 20:51 - INFO - SI KOPER03 - Univerza na primorskem, 4, Titov trg / Piazza Tito, Koper / Capodistria (naselje), Koper / Capodistria, Upravna enota Koper / Unità amministrativa Capodistria, 6000, Slovenija (45.5482932, 13.7293636)
-2024-11-06 20:51 - INFO - I  TRIESTE01 - Università degli Studi di Trieste, Via dei Baiardi, Scoglietto, Roiano-Gretta-Barcola-Cologna-Scorcola, Conconello / Ferlugi, Trieste, Friuli-Venezia Giulia, 34127, Italia (45.6601694, 13.794792540211322)
-2024-11-06 20:51 - INFO - HU BUDAPES01 - Eötvös Loránd Tudományegyetem Bölcsészettudományi Kar, 4-8, Múzeum körút, Palotanegyed, VIII. kerület, Budapest, Közép-Magyarország, 1088, Magyarország (47.4934799, 19.061899330588723)
-2024-11-06 20:51 - INFO - TR KARS01 - Kafkas Üniversitesi, Ahmet Arslan Cad., Şehitler Mahallesi, Kars Merkez, Doğu Anadolu Bölgesi, 36100, Türkiye (40.58094665, 43.05656720268237)
-2024-11-06 20:51 - INFO - E  MADRID04 - Universidad Autónoma de Madrid (U.A.M.) Campus de Cantoblanco, Calle de Darwin, El Goloso, Fuencarral-El Pardo, Madrid, Comunidad de Madrid, 28049, España (40.5453765, -3.6949577655963672)
-2024-11-06 20:51 - INFO - SK TRNAVA02 - Univerzita Svätého Cyrila a Metóda, Rybníková, Na hlinách, Trnava, okres Trnava, Trnavský kraj, Západné Slovensko, 917 01, Slovensko (48.3832728, 17.58875336850855)
-2024-11-06 20:51 - INFO - TR CANAKKA01 - Çanakkale Onsekiz Mart Üniversitesi, Atatürk Caddesi, Barbaros Mahallesi, Çanakkale Merkez, Çanakkale, Marmara Bölgesi, 17020, Türkiye (40.1120066, 26.421464811380968)
-2024-11-06 20:51 - INFO - PL LODZ01 - Uniwersytet Łódzki, Williama H. Lindleya, Śródmieście-Wschód, Fabryczna, Łódź-Śródmieście, Łódź, województwo łódzkie, 90-131, Polska (51.7713674, 19.474067719216052)
-2024-11-06 20:51 - INFO - E  MALAGA01 - Universidad de Málaga, 2, Cruz de Humilladero, Málaga, Málaga-Costa del Sol, Málaga, Andalucía, 29071, España (36.7165576, -4.495336390634675)
-2024-11-06 20:51 - INFO - D  LEIPZIG01 - Universität Leipzig, Kurt-Masur-Platz, Zentrum, Mitte, Leipzig, Sachsen, 04109, Deutschland (51.33845385, 12.37863856850984)
-2024-11-06 20:51 - INFO - PL GDANSK01 - Uniwersytet Gdański, Aleja Grunwaldzka, Oliwa, Gdańsk, województwo pomorskie, 80-309, Polska (54.396404950000004, 18.57400997579134)
-2024-11-06 20:51 - INFO - D  DORTMUN01 - Technische Universität Dortmund, Baroper Straße, Eichlinghofen, Hombruch, Dortmund, Nordrhein-Westfalen, 44227, Deutschland (51.49148435, 7.4122738886856805)
-2024-11-06 20:51 - INFO - P  LEIRIA01 - Rua General Norton de Matos, Quinta de São Bartolomeu, Cruz d'Areia, Leiria, Pousos, Barreira e Cortes, Leiria, 2410-272, Portugal (39.73708, -8.8106098)
-2024-11-06 20:51 - INFO - SK BANSKA01 - Univerzita Mateja Bela v Banskej Bystrici, 739/12, Národná, Banská Bystrica, okres Banská Bystrica, Banskobystrický kraj, Stredné Slovensko, 974 04, Slovensko (48.73317955, 19.145530921337212)
-2024-11-06 20:51 - INFO - EE TALLINN05 - Tallinna Ülikool, Tuukri, Sadama, Kesklinna linnaosa, Tallinn, Harju maakond, 10154, Eesti (59.4393125, 24.772347058941484)
-2024-11-06 20:51 - INFO - SK BRATISL02 - Univerzita Komenského v Bratislave, Šafárikovo námestie, Príboj, Historické jadro, Bratislava, okres Bratislava I, Bratislava, Bratislavský kraj, 811 02, Slovensko (48.1412324, 17.1161819)
-2024-11-06 20:51 - INFO - TR ESKISEH03 - Eskişehir Teknik Üniversitesi 2 Eylül Kampüsü, Eskişehir- Sarıcakaya yolu, Gazipaşa Mahallesi, Tepebaşı, Eskişehir, İç Anadolu Bölgesi, 26220, Türkiye (39.8168591, 30.53174476235694)
-2024-11-06 20:51 - INFO - S  UMEA01 - Umeå universitet, Strombergs väg, Fridhem, Universitets- och sjukhusområdet, Umeå, Umeå kommun, Västerbottens län, 903 37, Sverige (63.82177625, 20.304316311493196)
-2024-11-06 20:51 - INFO - G  ATHINE41 - Πανεπιστήμιο Αιγαίου, 2, Κωνσταντινουπόλεως, Βροντάδο, Ξηρόκαμπος, Ερμούπολη, Δήμος Σύρου-Ερμούπολης, Περιφερειακή Ενότητα Σύρου, Περιφέρεια Νοτίου Αιγαίου, Αποκεντρωμένη Διοίκηση Αιγαίου, 841 00, Ελλάς (37.445396200000005, 24.941762048631766)
-2024-11-06 20:51 - INFO - E  JAEN01 - Universidad de Jaén, Avenida Antonio Pascual Acosta, Jaén, Andalucía, 23009, España (37.78820865, -3.776633970633042)
-2024-11-06 20:51 - INFO - D  WURZBUR01 - Universität Würzburg, B 19, Grombühl, Würzburg, Bayern, 97076, Deutschland (49.780603150000005, 9.971655766351642)
-2024-11-06 20:51 - INFO - F  ANGERS08 - École Supérieure d'Agricultures, 55, Rue Rabelais, Le Haras, Justices - Madeleine - Saint-Léonard, Angers, Maine-et-Loire, Pays de la Loire, France métropolitaine, 49000, France (47.459291300000004, -0.5441803899948905)
-2024-11-06 20:51 - INFO - RO TIMISOA01 - Universitatea de Vest din Timișoara, Strada Plautius Andronescu, Elisabetin, Timișoara, Timiș, 300224, România (45.74732925, 21.23126099621941)
-2024-11-06 20:51 - INFO - D  SIGMARI01 - Gebäude 108, 51/8, Anton-Günther-Straße, Sigmaringen, Gemeindeverwaltungsverband Sigmaringen, Landkreis Sigmaringen, Baden-Württemberg, 72488, Deutschland (48.08723655, 9.239926428787928)
-2024-11-06 20:51 - INFO - I  CAMERIN01 - Università degli Studi di Camerino, Amandola, Fermo, Marche, 63857, Italia (43.13963305, 13.067215488690735)
-2024-11-06 20:51 - INFO - TR IZMIR01 - Dokuz Eylül Üniversitesi, İzmir Çevre Yolu, Adatepe Mahallesi, Buca, İzmir, Ege Bölgesi, 35400, Türkiye (38.3669827, 27.2215606)
-2024-11-06 20:51 - INFO - PL POZNAN01 - Rektorat UAM, 1, Henryka Wieniawskiego, Święty Marcin, Stare Miasto, Poznań, województwo wielkopolskie, 61-712, Polska (52.4082033, 16.9158024)
-2024-11-06 20:51 - INFO - HR ZAGREB11 - Visoko učilište Algebra, 24, Gradišćanska ulica, Mjesni odbor "Bartol Kašić", Gradska četvrt Črnomerec, Zagreb, Grad Zagreb, 10000, Hrvatska (45.810512700000004, 15.941112901216494)
-2024-11-06 20:51 - INFO - TR TRABZON04 - Trabzon Üniversitesi Fatih Eğitim Kampüsü, Fatih Sultan Mehmet Caddesi, Söğütlü Mahallesi, Osmanbaba, Akçaabat, Trabzon, Karadeniz Bölgesi, 61310, Türkiye (41.00981805, 39.60852063412131)
-2024-11-06 20:51 - INFO - F  TOULOUS15 - École d'ingénieurs de Purpan - Toulouse INP, Voie du T.O.E.C., Fontaine Bayonne - Cartoucherie, Toulouse Rive Gauche, Toulouse, Haute-Garonne, Occitanie, France métropolitaine, 31300, France (43.6024928, 1.3965155228102595)
-2024-11-06 20:51 - INFO - D  KOTHEN01 - Hochschule Anhalt, Fasanerieallee, Köthen, Köthen (Anhalt), Anhalt-Bitterfeld, Sachsen-Anhalt, 06366, Deutschland (51.754683150000005, 11.959005355601846)
-2024-11-06 20:51 - INFO - RO BUCURES09 - Universitatea din București, 4-12, Bulevardul Regina Elisabeta, Colțea, Centrul Istoric, Sector 3, București, 030018, România (44.43564445, 26.10092625223488)
-2024-11-06 20:51 - INFO - RO BUCURES18 - Universitatea Româno-Americană, 1B, Bulevardul Expoziției, Domenii, Sector 1, București, 012101, România (44.472983799999994, 26.065691841236948)
-2024-11-06 20:51 - INFO - PL SLUPSK01 - Uniwersytet Pomorski w Słupsku, Spacerowa, Osiedle Akademickie, Słupsk, województwo pomorskie, 76-200, Polska (54.452308849999994, 17.04308372341758)
-2024-11-06 20:51 - INFO - SK PRESOV01 - Prešovská univerzita v Prešove, Zápotockého, Sídlisko Duklianskych hrdinov, Staré mesto, Prešov, okres Prešov, Prešovský kraj, Východné Slovensko, 080 01, Slovensko (48.989434, 21.235015177927682)
-2024-11-06 20:51 - INFO - PL LODZ02 - Politechnika Łódzka, Profesora Bohdana Stefanowskiego, Stare Polesie, Politechniczna, Łódź-Polesie, Łódź, województwo łódzkie, 90-537, Polska (51.752577, 19.4529575)
-2024-11-06 20:51 - INFO - D  ROSTOCK01 - Universität Rostock, Zingst, Vorpommern-Rügen, Mecklenburg-Vorpommern, 18374, Deutschland (54.4309852, 12.6858664)
-2024-11-06 20:51 - INFO - D  KAISERS01 - Rheinland-Pfälzische Technische Universität, Campus Kaiserslautern, Trippstadter Straße, PRE Uni-Park, Uni-Wohnstadt, Kaiserslautern, Rheinland-Pfalz, 67663, Deutschland (49.4246142, 7.754214153273509)
-2024-11-06 20:51 - INFO - S  UPPSALA01 - Uppsala universitet, Biskopsgatan, Främre Luthagen, Fjärdingen, Uppsala, Uppsala kommun, Uppsala län, 753 11, Sverige (59.8576902, 17.6297861)
-2024-11-06 20:51 - INFO - LT KAUNAS01 - Vytauto Didžiojo universitetas, 28, S. Daukanto g., Naujamiestis, Centro seniūnija, Kaunas, Kauno miesto savivaldybė, Kauno apskritis, 44248, Lietuva (54.8984353, 23.91439374490837)
-2024-11-06 20:51 - INFO - BG ROUSSE01 - Русенски университет "Ангел Кънчев", 8, Студентска, ж.к. Здравец-север 1, ж.к. Възраждане - Юг, Русе, 7017, България (43.85348155, 25.972612663551303)
-2024-11-06 20:51 - INFO - RS NOVISAD02 - Универзитет у Новом Саду, Др Симе Милошевића, МЗ Лиман, Лиман, Нови Сад, Град Нови Сад, Јужнобачки управни округ, Војводина, 21101, Србија (45.246226, 19.851175531732203)
-2024-11-06 20:51 - INFO - PL CZESTOC01 - Politechnika Częstochowska, Jana Kilińskiego, Osiedle Tysiąclecia, Tysiąclecie, Częstochowa, 42-218, Polska (50.822852350000005, 19.115807327479168)
-2024-11-06 20:51 - INFO - LV JELGAVA01 - Latvijas Lauksaimniecības universitāte, 43, Dobeles iela, Vecais gals, Jelgava, LV-3001, Latvija (56.6517532, 23.7136084)
-2024-11-06 20:51 - INFO - HR SPLIT01 - Sveučilište u Splitu, Sućidar, Split, Grad Split, 21111, Hrvatska (43.5117478, 16.46760154890833)
-2024-11-06 20:51 - INFO - D  DRESDEN02 - Technische Universität Dresden, Kreischa, Sächsische Schweiz-Osterzgebirge, Sachsen, 01731, Deutschland (51.028276500000004, 13.735982754935176)
-2024-11-06 20:51 - INFO - Fetched geocoords.
-2024-11-06 20:51 - INFO - shape: (5, 8)
-┌─────────────────────────────────┬──────────────┬───────────┬──────────────────────┬─────────────────────────────────┬─────────────────────────────────┬────────────────────┬────────────────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město     ┆ Stát                 ┆ Obory                           ┆ URL                             ┆ Longtitude         ┆ Latitude           │
-│ ---                             ┆ ---          ┆ ---       ┆ ---                  ┆ ---                             ┆ ---                             ┆ ---                ┆ ---                │
-│ str                             ┆ str          ┆ str       ┆ str                  ┆ str                             ┆ str                             ┆ str                ┆ str                │
-╞═════════════════════════════════╪══════════════╪═══════════╪══════════════════════╪═════════════════════════════════╪═════════════════════════════════╪════════════════════╪════════════════════╡
-│ Akdeniz Üniversitesi            ┆ TR ANTALYA01 ┆ Antalya   ┆ Turecká republika    ┆ Biologické a příbuzné vědy      ┆ http://www.akdeniz.edu.tr       ┆ 30.650947292742977 ┆ 36.8937844         │
-│ ALANYA UNIVERSITY               ┆ TR ANTALYA04 ┆ Alanya    ┆ Turecká republika    ┆ Informační a komunikační techn… ┆ https://www.alanyauniversity.e… ┆ 32.0844180072318   ┆ 36.52653915        │
-│ ALGEBRA UNIVERSITY COLLEGE      ┆ HR ZAGREB11  ┆ ZAGREB    ┆ Chorvatská republika ┆ Informační a komunikační techn… ┆ https://www.algebra.hr          ┆ 15.941112901216494 ┆ 45.810512700000004 │
-│ Canakkale Onsekiz Mart Ünivers… ┆ TR CANAKKA01 ┆ Canakkale ┆ Turecká republika    ┆ Biologické a příbuzné vědy – o… ┆ www.comu.edu.tr                 ┆ 26.421464811380968 ┆ 40.1120066         │
-│ Dokuz Eylül Üniversitesi, Izmi… ┆ TR IZMIR01   ┆ Izmir     ┆ Turecká republika    ┆ Biologické a příbuzné vědy      ┆ http://www.deu.edu.tr           ┆ 27.2215606         ┆ 38.3669827         │
-└─────────────────────────────────┴──────────────┴───────────┴──────────────────────┴─────────────────────────────────┴─────────────────────────────────┴────────────────────┴────────────────────┘
-2024-11-06 20:51 - INFO - Done!
+2024-11-10 01:40 - INFO - Tables read successfully.
+2024-11-10 01:40 - INFO - Columns united.
+2024-11-10 01:40 - INFO - ['Univerzita', 'ERASMUS CODE', 'Město', 'Stát', 'Obor', 'Název']
+2024-11-10 01:40 - INFO - Renamed cols.
+2024-11-10 01:40 - INFO - shape: (5, 5)
+┌───────────────────────────────┬──────────────┬─────────────┬──────────────────────┬─────────────────────────────────┐
+│ Univerzita                    ┆ ERASMUS CODE ┆ Město       ┆ Stát                 ┆ Obory                           │
+│ ---                           ┆ ---          ┆ ---         ┆ ---                  ┆ ---                             │
+│ str                           ┆ str          ┆ str         ┆ str                  ┆ str                             │
+╞═══════════════════════════════╪══════════════╪═════════════╪══════════════════════╪═════════════════════════════════╡
+│ POLITECHNIKA LODZKA           ┆ PL LODZ02    ┆ Lodz        ┆ Polská republika     ┆ Informační a komunikační techn… │
+│ POLITECHNIKA CZESTOCHOWSKA    ┆ PL CZESTOC01 ┆ Czestochowa ┆ Polská republika     ┆ Matematika a statistika         │
+│ SVEUCILISTE U SPLITU          ┆ HR SPLIT01   ┆ SPLIT       ┆ Chorvatská republika ┆ Fyzika                          │
+│ SVEUCILISTE U SPLITU          ┆ HR SPLIT01   ┆ SPLIT       ┆ Chorvatská republika ┆ Chemie                          │
+│ ESKISEHIR TEKNIK UNIVERSITESI ┆ TR ESKISEH03 ┆ Eskisehir   ┆ Turecká republika    ┆ Vědy o Zemi                     │
+└───────────────────────────────┴──────────────┴─────────────┴──────────────────────┴─────────────────────────────────┘
+2024-11-10 01:40 - INFO - Fetched url.
+2024-11-10 01:40 - INFO - shape: (5, 6)
+┌───────────────────────────────┬──────────────┬─────────────┬──────────────────────┬─────────────────────────────────┬──────────────────────────────┐
+│ Univerzita                    ┆ ERASMUS CODE ┆ Město       ┆ Stát                 ┆ Obory                           ┆ URL                          │
+│ ---                           ┆ ---          ┆ ---         ┆ ---                  ┆ ---                             ┆ ---                          │
+│ str                           ┆ str          ┆ str         ┆ str                  ┆ str                             ┆ str                          │
+╞═══════════════════════════════╪══════════════╪═════════════╪══════════════════════╪═════════════════════════════════╪══════════════════════════════╡
+│ POLITECHNIKA LODZKA           ┆ PL LODZ02    ┆ Lodz        ┆ Polská republika     ┆ Informační a komunikační techn… ┆ https://www.p.lodz.pl        │
+│ POLITECHNIKA CZESTOCHOWSKA    ┆ PL CZESTOC01 ┆ Czestochowa ┆ Polská republika     ┆ Matematika a statistika         ┆ https://www.pcz.pl           │
+│ SVEUCILISTE U SPLITU          ┆ HR SPLIT01   ┆ SPLIT       ┆ Chorvatská republika ┆ Fyzika                          ┆ https://www.unist.hr         │
+│ SVEUCILISTE U SPLITU          ┆ HR SPLIT01   ┆ SPLIT       ┆ Chorvatská republika ┆ Chemie                          ┆ https://www.unist.hr         │
+│ ESKISEHIR TEKNIK UNIVERSITESI ┆ TR ESKISEH03 ┆ Eskisehir   ┆ Turecká republika    ┆ Vědy o Zemi                     ┆ https://www.eskisehir.edu.tr │
+└───────────────────────────────┴──────────────┴─────────────┴──────────────────────┴─────────────────────────────────┴──────────────────────────────┘
+2024-11-10 01:40 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)")': /search?q=Angel+Kanchev+University+of+Ruse&format=json&limit=1
+2024-11-10 01:40 - INFO - LT KAUNAS01 - Vytauto Didžiojo universitetas, 53, Laisvės al., Naujamiestis, Centro seniūnija, Kaunas, Kauno miesto savivaldybė, Kauno apskritis, 44309, Lietuva (54.89709905, 23.914216535114505)
+2024-11-10 01:40 - INFO - D  WURZBUR01 - Universität Würzburg, Bodelschwinghstraße, Keesburg, Frauenland, Würzburg, Bayern, 97074, Deutschland (49.780603150000005, 9.971655766351642)
+2024-11-10 01:40 - INFO - D  DRESDEN02 - Technische Universität Dresden, Kreischa, Sächsische Schweiz-Osterzgebirge, Sachsen, 01731, Deutschland (51.028276500000004, 13.735982754935176)
+2024-11-10 01:40 - INFO - SK TRNAVA02 - Univerzita Svätého Cyrila a Metóda, Rybníková, Na hlinách, Trnava, okres Trnava, Trnavský kraj, Západné Slovensko, 917 01, Slovensko (48.3832728, 17.58875336850855)
+2024-11-10 01:40 - INFO - D  GIESSEN01 - Justus-Liebig-Universität - Campusbereich Philosophikum II, 10, Otto-Behaghel-Straße, Schiffenberger Tal, Gießen, Landkreis Gießen, Hessen, 35394, Deutschland (50.573589150000004, 8.699976819474603)
+2024-11-10 01:40 - INFO - PL OPOLE01 - Uniwersytet Opolski, 48, Oleska, Śródmieście, Opole, województwo opolskie, 45-052, Polska (50.673363949999995, 17.93144882718738)
+2024-11-10 01:40 - INFO - RS NOVISAD02 - Универзитет у Новом Саду, Булевар Цара Лазара, МЗ Лиман, Лиман, Нови Сад, Град Нови Сад, Јужнобачки управни округ, Војводина, 21101, Србија (45.246226, 19.851175531732203)
+2024-11-10 01:40 - INFO - F  TOULOUS15 - École d'ingénieurs de Purpan - Toulouse INP, Passage Jean-Claude Godfrain, Baluffet, Lardenne - Pradette - Basso Cambo, Toulouse Ouest, Toulouse, Haute-Garonne, Occitanie, France métropolitaine, 31300, France (43.6024928, 1.3965155228102595)
+2024-11-10 01:40 - INFO - E  MADRID04 - Universidad Autónoma de Madrid (U.A.M.) Campus de Cantoblanco, Avenida de Francisco Tomás y Valiente, El Goloso, Fuencarral-El Pardo, Madrid, Comunidad de Madrid, 28049, España (40.5453765, -3.6949577655963672)
+2024-11-10 01:40 - INFO - TR ANTALYA01 - Akdeniz Üniversitesi, 735 Sokak, Pınarbaşı Mahallesi, Konyaaltı, Antalya, Akdeniz Bölgesi, 07070, Türkiye (36.8937844, 30.650947292742977)
+2024-11-10 01:40 - INFO - RO TIMISOA01 - Universitatea de Vest din Timișoara, Bulevardul Vasile Pârvan, Elisabetin, Timișoara, Timiș, 300224, România (45.74732925, 21.23126099621941)
+2024-11-10 01:40 - INFO - TR CANAKKA01 - Çanakkale Onsekiz Mart Üniversitesi, Çanakkale 18 Mart Ünv., Barbaros Mahallesi, Çanakkale Merkez, Çanakkale, Marmara Bölgesi, 17020, Türkiye (40.1120066, 26.421464811380968)
+2024-11-10 01:40 - INFO - HU BUDAPES01 - Eötvös Loránd Tudományegyetem Bölcsészettudományi Kar, 4-8, Múzeum körút, Pest, Belváros, V. kerület, Budapest, Közép-Magyarország, 1088, Magyarország (47.4934799, 19.061899330588723)
+2024-11-10 01:40 - INFO - TR TRABZON04 - Trabzon Üniversitesi İlahiyat Fakültesi, Rize Caddesi, Yalıncak Mahallesi, Çimenli Mahallesi, Ortahisar, Trabzon, Karadeniz Bölgesi, 61010, Türkiye (40.9853391, 39.81261147848775)
+2024-11-10 01:40 - INFO - PL LODZ02 - Politechnika Łódzka, Profesora Bohdana Stefanowskiego, Stare Polesie, Politechniczna, Łódź-Polesie, Łódź, województwo łódzkie, 90-537, Polska (51.752577, 19.4529575)
+2024-11-10 01:40 - INFO - P  LEIRIA01 - Rua General Norton de Matos, Quinta de São Bartolomeu, Cruz d'Areia, Leiria, Pousos, Barreira e Cortes, Leiria, 2410-272, Portugal (39.737149106966484, -8.8105226085993)
+2024-11-10 01:40 - INFO - SK BRATISL02 - Univerzita Komenského v Bratislave, Šafárikovo námestie, Príboj, Historické jadro, Bratislava, okres Bratislava I, Bratislava, Bratislavský kraj, 811 02, Slovensko (48.1412324, 17.1161819)
+2024-11-10 01:40 - INFO - BG ROUSSE01 - Русенски университет "Ангел Кънчев", 8, Студентска, ж.к. Здравец-север 1, ж.к. Възраждане - Юг, Русе, 7017, България (43.85348155, 25.972612663551303)
+2024-11-10 01:40 - INFO - SI KOPER03 - Univerza na primorskem, 4, Titov trg / Piazza Tito, Koper / Capodistria (naselje), Koper / Capodistria, Upravna enota Koper / Unità amministrativa Capodistria, 6000, Slovenija (45.5482932, 13.7293636)
+2024-11-10 01:40 - INFO - E  JAEN01 - Universidad de Jaén, Avenida Antonio Pascual Acosta, Jaén, Andalucía, 23009, España (37.78820865, -3.776633970633042)
+2024-11-10 01:40 - INFO - HR ZAGREB11 - Visoko učilište Algebra, 24, Gradišćanska ulica, Mjesni odbor "Bartol Kašić", Gradska četvrt Črnomerec, Zagreb, Grad Zagreb, 10000, Hrvatska (45.810512700000004, 15.941112901216494)
+2024-11-10 01:40 - INFO - PL SLUPSK01 - Uniwersytet Pomorski w Słupsku, Leśna, Osiedle Akademickie, Słupsk, województwo pomorskie, 76-200, Polska (54.452308849999994, 17.04308372341758)
+2024-11-10 01:40 - INFO - I  TRIESTE01 - Università degli Studi di Trieste, Via Cesare Cantù, Case degli Americani, Roiano-Gretta-Barcola-Cologna-Scorcola, Conconello / Ferlugi, Trieste, Friuli-Venezia Giulia, 34134, Italia (45.6601694, 13.794792540211322)
+2024-11-10 01:40 - INFO - SK RUZOMBE01 - Katolícka univerzita v Ružomberku - Pedagogická fakulta, 15, Bottova, Levoča, okres Levoča, Prešovský kraj, Východné Slovensko, 054 01, Slovensko (49.0223689, 20.5875762)
+2024-11-10 01:40 - INFO - HR SPLIT01 - Sveučilište u Splitu, 31, Ruđera Boškovića, Pisano Kame, Split, Grad Split, Splitsko-dalmatinska županija, 21114, Hrvatska (43.5109588, 16.4681525)
+2024-11-10 01:40 - INFO - S  UPPSALA01 - Uppsala universitet, 3, Biskopsgatan, Främre Luthagen, Fjärdingen, Uppsala, Uppsala kommun, Uppsala län, 753 11, Sverige (59.8576902, 17.6297861)
+2024-11-10 01:40 - INFO - F  ANGERS08 - École Supérieure d'Agricultures, 55, Rue Rabelais, Justices - Madeleine - Saint-Léonard, Angers, Maine-et-Loire, Pays de la Loire, France métropolitaine, 49000, France (47.459291300000004, -0.5441803899948905)
+2024-11-10 01:40 - INFO - RO BUCURES09 - Universitatea din București, 4-12, Bulevardul Regina Elisabeta, Colțea, Centrul Istoric, Sector 3, București, 030018, România (44.43564445, 26.10092625223488)
+2024-11-10 01:40 - INFO - PL POZNAN01 - Collegium Minus, 1, Henryka Wieniawskiego, Święty Marcin, Stare Miasto, Poznań, województwo wielkopolskie, 61-712, Polska (52.40816565, 16.915612725194535)
+2024-11-10 01:40 - INFO - RO BUCURES18 - Universitatea Româno-Americană, 1B, Bulevardul Expoziției, Domenii, Sector 1, București, 012101, România (44.472983799999994, 26.065691841236948)
+2024-11-10 01:40 - INFO - D  SIGMARI01 - Gebäude 104, 51/4, Anton-Günther-Straße, Sigmaringen, Gemeindeverwaltungsverband Sigmaringen, Landkreis Sigmaringen, Baden-Württemberg, 72488, Deutschland (48.08835285, 9.240396348743413)
+2024-11-10 01:40 - INFO - TR ESKISEH03 - Eskişehir Teknik Üniversitesi 2 Eylül Kampüsü, Eskişehir- Sarıcakaya yolu, Gazipaşa Mahallesi, Tepebaşı, Eskişehir, İç Anadolu Bölgesi, 26220, Türkiye (39.8168591, 30.53174476235694)
+2024-11-10 01:40 - INFO - D  DORTMUN01 - Technische Universität Dortmund, Rahmkesweg, Eichlinghofen, Hombruch, Dortmund, Nordrhein-Westfalen, 44227, Deutschland (51.49148435, 7.4122738886856805)
+2024-11-10 01:40 - INFO - PL GDANSK01 - Uniwersytet Gdański, Aleja Grunwaldzka, Olivia Centre, Oliwa, Gdańsk, województwo pomorskie, 80-309, Polska (54.396404950000004, 18.57400997579134)
+2024-11-10 01:40 - INFO - E  MALAGA01 - Universidad de Málaga, 2, Cruz de Humilladero, Málaga, Málaga-Costa del Sol, Málaga, Andalucía, 29071, España (36.7165576, -4.495336390634675)
+2024-11-10 01:40 - INFO - TR ANTALYA04 - Alanya Alaaddin Keykubat Üniversitesi, Karapınar Cd., Alanya, Antalya, Akdeniz Bölgesi, 07460, Türkiye (36.52653915, 32.0844180072318)
+2024-11-10 01:40 - INFO - TR IZMIR01 - Dokuz Eylül Üniversitesi, Mustafa Münir Birsel Sokağı, Kültür Mahallesi, İzmir, Konak, İzmir, Ege Bölgesi, 35220, Türkiye (38.43052955, 27.13696496633385)
+2024-11-10 01:40 - INFO - PL CZESTOC01 - Politechnika Częstochowska, Aleja Armii Krajowej, Osiedle Tysiąclecia, Tysiąclecie, Częstochowa, województwo śląskie, 42-201, Polska (50.822852350000005, 19.115807327479168)
+2024-11-10 01:40 - INFO - I  URBINO01 - Sede centrale Università degli Studi di Urbino Carlo Bo, Viale Ferdinando Salvalai, Urbino, Pesaro e Urbino, Marche, 61029, Italia (43.7232299, 12.6366992)
+2024-11-10 01:40 - INFO - D  ROSTOCK01 - Universität Rostock, Zingst, Vorpommern-Rügen, Mecklenburg-Vorpommern, 18374, Deutschland (54.4308835, 12.6856683)
+2024-11-10 01:40 - INFO - TR KARS01 - Kafkas Üniversitesi, Kars-Ardahan yolu, Şehitler Mahallesi, Kars Merkez, Kars, Doğu Anadolu Bölgesi, Türkiye (40.58094665, 43.05656720268237)
+2024-11-10 01:40 - INFO - D  KAISERS01 - Rheinland-Pfälzische Technische Universität, Campus Kaiserslautern, Paul-Ehrlich-Straße, PRE Uni-Park, Lämmchesberg, Kaiserslautern, Rheinland-Pfalz, 67663, Deutschland (49.4246142, 7.754214153273509)
+2024-11-10 01:40 - INFO - G  ATHINE41 - Πανεπιστήμιο Αιγαίου, 2, Κωνσταντινουπόλεως, Βροντάδο, Ξηρόκαμπος, Ερμούπολη, Δήμος Σύρου-Ερμούπολης, Περιφερειακή Ενότητα Σύρου, Περιφέρεια Νοτίου Αιγαίου, Αποκεντρωμένη Διοίκηση Αιγαίου, 841 00, Ελλάς (37.445396200000005, 24.941762048631766)
+2024-11-10 01:40 - INFO - D  LEIPZIG01 - Universität Leipzig, Augustusplatz, Zentrum, Mitte, Leipzig, Sachsen, 04109, Deutschland (51.33845385, 12.37863856850984)
+2024-11-10 01:40 - INFO - SK PRESOV01 - Prešovská univerzita v Prešove, Francisciho, Sídlisko Duklianskych hrdinov, Staré Mesto, Prešov, okres Prešov, Prešovský kraj, Východné Slovensko, 080 01, Slovensko (48.989434, 21.235015177927682)
+2024-11-10 01:40 - INFO - SK BANSKA01 - Univerzita Mateja Bela v Banskej Bystrici, 739/12, Národná, Banská Bystrica, okres Banská Bystrica, Banskobystrický kraj, Stredné Slovensko, 974 04, Slovensko (48.73317955, 19.145530921337212)
+2024-11-10 01:40 - INFO - LV JELGAVA01 - Latvijas Lauksaimniecības universitāte, 43, Dobeles iela, Vecais gals, Jelgava, LV-3001, Latvija (56.6517532, 23.7136084)
+2024-11-10 01:40 - INFO - EE TALLINN05 - Tallinna Ülikool, Narva mnt, Raua, Kesklinna linnaosa, Tallinn, Harju maakond, 10120, Eesti (59.4393125, 24.772347058941484)
+2024-11-10 01:40 - INFO - S  UMEA01 - Umeå universitet, Gösta Skoglunds väg, Lilljansberget, Universitets- och sjukhusområdet, Umeå, Umeå kommun, Västerbottens län, 907 13, Sverige (63.82177625, 20.304316311493196)
+2024-11-10 01:40 - INFO - I  CAMERIN01 - Università degli Studi di Camerino, Amandola, Fermo, Marche, 63857, Italia (43.13963305, 13.067215488690735)
+2024-11-10 01:40 - INFO - PL LODZ01 - Uniwersytet Łódzki, Williama H. Lindleya, Śródmieście-Wschód, Fabryczna, Łódź-Śródmieście, Łódź, województwo łódzkie, 90-131, Polska (51.771323699999996, 19.47407557561835)
+2024-11-10 01:40 - INFO - D  KOTHEN01 - Hochschule Anhalt, Philipp-Semmelweis-Straße, Köthen, Köthen (Anhalt), Anhalt-Bitterfeld, Sachsen-Anhalt, 06366, Deutschland (51.745161800000005, 11.983290112147248)
+2024-11-10 01:40 - INFO - Fetched geocoords.
+2024-11-10 01:40 - INFO - shape: (5, 8)
+┌───────────────────────────────┬──────────────┬─────────────┬──────────────────────┬─────────────────────────────────┬──────────────────────────────┬────────────────────┬────────────────────┐
+│ Univerzita                    ┆ ERASMUS CODE ┆ Město       ┆ Stát                 ┆ Obory                           ┆ URL                          ┆ Longitude          ┆ Latitude           │
+│ ---                           ┆ ---          ┆ ---         ┆ ---                  ┆ ---                             ┆ ---                          ┆ ---                ┆ ---                │
+│ str                           ┆ str          ┆ str         ┆ str                  ┆ str                             ┆ str                          ┆ str                ┆ str                │
+╞═══════════════════════════════╪══════════════╪═════════════╪══════════════════════╪═════════════════════════════════╪══════════════════════════════╪════════════════════╪════════════════════╡
+│ POLITECHNIKA LODZKA           ┆ PL LODZ02    ┆ Lodz        ┆ Polská republika     ┆ Informační a komunikační techn… ┆ https://www.p.lodz.pl        ┆ 19.4529575         ┆ 51.752577          │
+│ POLITECHNIKA CZESTOCHOWSKA    ┆ PL CZESTOC01 ┆ Czestochowa ┆ Polská republika     ┆ Matematika a statistika         ┆ https://www.pcz.pl           ┆ 19.115807327479168 ┆ 50.822852350000005 │
+│ SVEUCILISTE U SPLITU          ┆ HR SPLIT01   ┆ SPLIT       ┆ Chorvatská republika ┆ Fyzika                          ┆ https://www.unist.hr         ┆ 16.4681525         ┆ 43.5109588         │
+│ SVEUCILISTE U SPLITU          ┆ HR SPLIT01   ┆ SPLIT       ┆ Chorvatská republika ┆ Chemie                          ┆ https://www.unist.hr         ┆ 16.4681525         ┆ 43.5109588         │
+│ ESKISEHIR TEKNIK UNIVERSITESI ┆ TR ESKISEH03 ┆ Eskisehir   ┆ Turecká republika    ┆ Vědy o Zemi                     ┆ https://www.eskisehir.edu.tr ┆ 30.53174476235694  ┆ 39.8168591         │
+└───────────────────────────────┴──────────────┴─────────────┴──────────────────────┴─────────────────────────────────┴──────────────────────────────┴────────────────────┴────────────────────┘
+2024-11-10 01:40 - INFO - Done!

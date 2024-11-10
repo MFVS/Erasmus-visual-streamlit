@@ -34,11 +34,16 @@ def unite_cols(new_schools:pl.DataFrame) -> pl.DataFrame:
 
 # Funkce která předělává čísla oborů na jména
 def rename_subs(new_schools:pl.DataFrame) -> pl.DataFrame:
-    code_trans = pl.read_excel("cz_isced_f_systematicka_cast.xlsx") # Tabulka se jmény oborů
+    # Tabulka se jmény oborů
+    code_trans = pl.read_excel("cz_isced_f_systematicka_cast.xlsx")
+    code_trans = code_trans.with_columns(
+       pl.col("Název").str.replace_all(r"(?i)– obory [dj]\. n\.", "").str.strip_chars_end().alias("Based") # Hranatá závorka je regulérní výraz: V podstatě to znamená "Pokud najdeš jedno písmeno z množiny"    
+    ).drop("Název").rename({"Based":"Název"}) 
+
 
     # Rozepiš obory
     new_schools = new_schools.with_columns(pl.col("Obor").str.split(", ").alias("Obor2")).drop("Obor").rename({"Obor2":"Obor"})
-    new_schools_temp = new_schools.explode("Obor").join(code_trans, "Obor", how="left")
+    new_schools_temp = new_schools.explode("Obor").join(code_trans, "Obor", how="left").unique()
 
     # Přejmenuj obory, slož je zpět podle škol
     #obor_rename = new_schools_temp.lazy().group_by("Univerzita").agg(pl.col("Název")).collect().with_columns(pl.col("Název").list.join(", ").alias("Obory")).drop("Název")
@@ -49,7 +54,15 @@ def rename_subs(new_schools:pl.DataFrame) -> pl.DataFrame:
 
 # Funkce která přidává url
 def get_url(new_schools:pl.DataFrame, url_source:pl.DataFrame) -> pl.DataFrame:
-    return new_schools.join(url_source, "ERASMUS CODE", "left").rename({"Website Url":"URL"})
+    return new_schools.join(url_source, "ERASMUS CODE", "left").with_columns(
+        pl.when( # Potenciálně obsolete: Dá se nastavit aby se sloupeček zobrazoval jako hypertexty ve visualizeru
+            pl.col("Website Url").str.starts_with("http").not_()
+        ).then(
+            "https://" + pl.col("Website Url")
+        ).otherwise(
+            pl.col("Website Url")
+        ).alias("URL")
+    ).drop("Website Url")#.rename({"Website Url":"URL"})
 
 # Funkce která přidává geografické koordinace (aka zdroj všeho zla)
 def get_coords(new_schools:pl.DataFrame, address_source:pl.DataFrame) -> pl.DataFrame:

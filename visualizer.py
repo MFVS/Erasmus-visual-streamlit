@@ -121,4 +121,4 @@ st_folium(europe, use_container_width=True)
 
 #st.session_state
 
-st.dataframe(schools_sub, use_container_width=True)
+st.dataframe(schools_sub, use_container_width=True, column_config={"URL":st.column_config.LinkColumn()})

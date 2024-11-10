@@ -19,9 +19,9 @@ Akutální web verze (NEREFLEKTUJE AKTUALIZACE): erasmus-proto.streamlit.app
 ### to-do 7. týden
 - **Excel tabulka**
     - kódy oborů ... přidat do sloupce do schools.xlsx
-    - názvy univerzit ... vzít ty "oficiální", ne ty co byly zadány v ujepáckém souboru
-    - sloučení názvů oborů ... zbavit se d.n. a j.n. atd.
-    - kód univerzity ... nebo smlouvy whatever, přidat jako sloupec
+    - názvy univerzit ... vzít ty "oficiální", ne ty co byly zadány v ujepáckém souboru   - Matěj
+    - sloučení názvů oborů ... zbavit se d.n. a j.n. atd.                                 [DONE]
+    - kód univerzity ... nebo smlouvy whatever, přidat jako sloupec                       - Matěj
 
 - **visualizer.py**
   - přidat katedry do filtru (řazení - katedra, obor, stát)
@@ -29,7 +29,7 @@ Akutální web verze (NEREFLEKTUJE AKTUALIZACE): erasmus-proto.streamlit.app
 
 - **loader.py**
   - podmínka kód katedry =! STORNO ... zbavit se ukončených smluv
-  - url ... přidat před každý vygenerovaný odkaz "http://"
+  - url ... přidat před každý vygenerovaný odkaz "http://"                                [Mělo by to fungovat, ale moc v to důvěru nemám]
  
   
 
