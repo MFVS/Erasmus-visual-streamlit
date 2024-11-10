@@ -7,21 +7,22 @@ Akutální web verze (NEREFLEKTUJE AKTUALIZACE): erasmus-proto.streamlit.app
 
 ## Co je třeba udělat:
 - Excel tabulku
-    - Předělat katedry na obory                             [DONE]
-    - Dodělat zbytek škol z poslaného souboru od Škvora     [SOMEWHAT DONE]
+    - ~~Předělat katedry na obory~~                             [DONE]
+    - ~~Dodělat zbytek škol z poslaného souboru od Škvora~~     [SOMEWHAT DONE]
     - Spravit generaci koordinací
-        * Některé školy nevracejí koordinace
+        * ~~Některé školy nevracejí koordinace~~
         * Prakticky žádná škola nevrací validní koordinace
-- Skript na přidání škol                                    [SOMEWHAT DONE]
-- Přístup k dalším souborům and whatnot
-- Sepsat sem všechno ostatní co spravit/přidat
+- ~~Skript na přidání škol~~                                    [SOMEWHAT DONE]
+- ~~Přístup k dalším souborům and whatnot~~
+- ~~Sepsat sem všechno ostatní co spravit/přidat~~
 
 ### to-do 7. týden
 - **Excel tabulka**
-    - kódy oborů ... přidat do sloupce do schools.xlsx
-    - názvy univerzit ... vzít ty "oficiální", ne ty co byly zadány v ujepáckém souboru   - Matěj
-    - sloučení názvů oborů ... zbavit se d.n. a j.n. atd.                                 [DONE]
-    - kód univerzity ... nebo smlouvy whatever, přidat jako sloupec                       - Matěj
+    - kódy oborů ... přidat do sloupce do schools.xlsx                                        - Matěj
+    - ~~názvy univerzit ... vzít ty "oficiální", ne ty co byly zadány v ujepáckém souboru~~   [DONE]
+      - Následek: Díry v lokacích; Upravit adresy dle openstreet nominatim api                - Matěj
+    - ~~sloučení názvů oborů ... zbavit se d.n. a j.n. atd.~~                                 [DONE]
+    - kód univerzity ... nebo smlouvy whatever, přidat jako sloupec                           
 
 - **visualizer.py**
   - přidat katedry do filtru (řazení - katedra, obor, stát)
@@ -29,7 +30,7 @@ Akutální web verze (NEREFLEKTUJE AKTUALIZACE): erasmus-proto.streamlit.app
 
 - **loader.py**
   - podmínka kód katedry =! STORNO ... zbavit se ukončených smluv
-  - url ... přidat před každý vygenerovaný odkaz "http://"                                [Mělo by to fungovat, ale moc v to důvěru nemám]
+  - ~~url ... přidat před každý vygenerovaný odkaz "http://"~~                                [Mělo by to fungovat, ale moc v to důvěru nemám]
  
   
 

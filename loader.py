@@ -19,7 +19,7 @@ log.basicConfig(
 # Funkce vracící slovník ve formátu {jméno v načítané tabulce:jméno v ukládané tabulce} 
 def getColumnTrans() -> Dict[str, str]:
     return {
-        "ciziSkolaNazev":"Univerzita",
+        #"ciziSkolaNazev":"Univerzita",
         "ciziSkolaZkratka":"ERASMUS CODE",
         "ciziSkolaMesto":"Město",
         "ciziSkolaStatNazev":"Stát",
@@ -27,10 +27,10 @@ def getColumnTrans() -> Dict[str, str]:
     }
 
 # Funkce sjednoducíjící jména načítané a ukláadané tabulky
-def unite_cols(new_schools:pl.DataFrame) -> pl.DataFrame:
+def unite_cols(new_schools:pl.DataFrame, name_gen:pl.DataFrame) -> pl.DataFrame:
     column_translator:Dict[str, str] = getColumnTrans()
-    shady_stuff:List[str] = list(column_translator.values())
-    return new_schools.rename(column_translator).select(shady_stuff)
+    shady_stuff:List[str] = ["Univerzita"] + list(column_translator.values())
+    return new_schools.drop("ciziSkolaNazev").rename(column_translator).join(name_gen, "ERASMUS CODE", "left").select(shady_stuff)
 
 # Funkce která předělává čísla oborů na jména
 def rename_subs(new_schools:pl.DataFrame) -> pl.DataFrame:
@@ -102,15 +102,23 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     # Načítání
     current_schools = pl.DataFrame()
     if not os.path.exists("schools.xlsx"):
-        current_schools = pl.from_dict({"ERASMUS CODE":[], "Univerzita":[], "Město":[], "Stát":[], "Longitude":[], "Latitude":[], "URL":[], "Obory":[]})
+        current_schools = pl.from_dict({
+            "ERASMUS CODE":[],
+            "Univerzita":[],
+            "Město":[],
+            "Stát":[],
+            "Longitude":[],
+            "Latitude":[],
+            "URL":[],
+            "Obory":[]})
     else:
         current_schools = pl.read_excel("schools.xlsx")
     new_schools = pl.read_excel(excel_file)
-    addresses = pl.read_excel("url_gen.xlsx").rename({"Erasms Code":"ERASMUS CODE"}).with_columns(pl.concat_list(pl.col("Street"), pl.col("City"), pl.col("Country Cd")).alias("Address")).select("ERASMUS CODE", "Website Url", "Address")
+    addresses = pl.read_excel("url_gen.xlsx").rename({"Erasms Code":"ERASMUS CODE", "Legal Name":"Univerzita"}).with_columns(pl.concat_list(pl.col("Street"), pl.col("City"), pl.col("Country Cd")).alias("Address")).select("ERASMUS CODE", "Univerzita", "Website Url", "Address")
     log.info("Tables read successfully.")
 
     # Sjednocení existujících sloupců
-    new_schools = unite_cols(new_schools)
+    new_schools = unite_cols(new_schools, addresses.select("ERASMUS CODE", "Univerzita"))
     log.info("Columns united.")
 
     # Přejmenování oborů
