@@ -22,7 +22,7 @@ Akutální web verze (NEREFLEKTUJE AKTUALIZACE): erasmus-proto.streamlit.app
     - ~~názvy univerzit ... vzít ty "oficiální", ne ty co byly zadány v ujepáckém souboru~~   [DONE]
       - Následek: Díry v lokacích; Upravit adresy dle openstreet nominatim api                - Matěj
     - ~~sloučení názvů oborů ... zbavit se d.n. a j.n. atd.~~                                 [DONE]
-    - kód univerzity ... nebo smlouvy whatever, přidat jako sloupec                           
+    - kód univerzity ... nebo smlouvy whatever, přidat jako sloupec                             [DONE?] ve schools.xlsx; ukázat i na stránce?                          
 
 - **visualizer.py**
   - přidat katedry do filtru (řazení - katedra, obor, stát)
