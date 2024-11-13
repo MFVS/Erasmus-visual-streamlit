@@ -23,6 +23,7 @@ Akutální web verze (NEREFLEKTUJE AKTUALIZACE): erasmus-proto.streamlit.app
       - Následek: Díry v lokacích; Upravit adresy dle openstreet nominatim api                - Matěj
     - ~~sloučení názvů oborů ... zbavit se d.n. a j.n. atd.~~                                 [DONE]
     - kód univerzity ... nebo smlouvy whatever, přidat jako sloupec                             [DONE?] ve schools.xlsx; ukázat i na stránce?                          
+    - Pokud více fakult bude obsahovat stejnou školu, obory se budou vzájemně přepisovat. Fix that shit
 
 - **visualizer.py**
   - přidat katedry do filtru (řazení - katedra, obor, stát)
