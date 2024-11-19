@@ -43,14 +43,15 @@ def rename_subs(new_schools:pl.DataFrame) -> pl.DataFrame:
 
     # Rozepiš obory
     new_schools = new_schools.with_columns(pl.col("Obor").str.split(", ").alias("Obor2")).drop("Obor").rename({"Obor2":"Obor"})
-    new_schools_temp = new_schools.explode("Obor").join(code_trans, "Obor", how="left").unique()
+    new_schools_temp = new_schools.explode("Obor").join(code_trans, "Obor", how="left").rename({"Název":"Obory"}).unique()
 
-    # Přejmenuj obory, slož je zpět podle škol
-    #obor_rename = new_schools_temp.lazy().group_by("Univerzita").agg(pl.col("Název")).collect().with_columns(pl.col("Název").list.join(", ").alias("Obory")).drop("Název")
+    # Agreguj ČÍSLA oborů, a nalep je na tabulku s explodovanými obory
+    obor_rename = new_schools_temp.lazy().group_by("ERASMUS CODE").agg(pl.col("Obor")).collect().with_columns(pl.col("Obor").list.join(", ").name.keep())#.drop("Název")
+    new_schools_temp = new_schools_temp.drop("Obor").join(obor_rename, "ERASMUS CODE", "left")
 
     # Vrať zpět pracovní tabulku s názvy oborů
     log.info(new_schools_temp.columns)
-    return new_schools_temp.drop("Obor").rename({"Název":"Obory"})#join(obor_rename, "Univerzita", "left").drop("Obor") #Sloupec obor je zbytečný, jsou to jenom ty čísla
+    return new_schools_temp
 
 # Funkce která přidává url
 def get_url(new_schools:pl.DataFrame, url_source:pl.DataFrame) -> pl.DataFrame:
@@ -103,14 +104,15 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     current_schools = pl.DataFrame()
     if not os.path.exists("schools.xlsx"):
         current_schools = pl.from_dict({
-            "ERASMUS CODE":[],
-            "Univerzita":[],
-            "Město":[],
-            "Stát":[],
-            "Longitude":[],
-            "Latitude":[],
-            "URL":[],
-            "Obory":[]})
+            "ERASMUS CODE":pl.Series(dtype=pl.String),
+            "Univerzita":pl.Series(dtype=pl.String),
+            "Město":pl.Series(dtype=pl.String),
+            "Stát":pl.Series(dtype=pl.String),
+            # "Longitude":pl.Series(dtype=pl.Float64),
+            # "Latitude":pl.Series(dtype=pl.Float64),
+            # "URL":pl.Series(dtype=pl.String),
+            "Obor":pl.Series(dtype=pl.String),
+            "Obory":pl.Series(dtype=pl.String)})
     else:
         current_schools = pl.read_excel("schools.xlsx")
     new_schools = pl.read_excel(excel_file)
@@ -126,15 +128,15 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     log.info("Renamed cols.")
     log.info(new_schools.head())
 
-    # Získání url
-    new_schools = get_url(new_schools, addresses.select("ERASMUS CODE", "Website Url"))
-    log.info("Fetched url.")
-    log.info(new_schools.head()) 
+    # # Získání url
+    # new_schools = get_url(new_schools, addresses.select("ERASMUS CODE", "Website Url"))
+    # log.info("Fetched url.")
+    # log.info(new_schools.head()) 
 
-    # Získání geokoordinací
-    new_schools = get_coords(new_schools, addresses.select("ERASMUS CODE", "Address"))
-    log.info("Fetched geocoords.")
-    log.info(new_schools.head())
+    # # Získání geokoordinací
+    # new_schools = get_coords(new_schools, addresses.select("ERASMUS CODE", "Address"))
+    # log.info("Fetched geocoords.")
+    # log.info(new_schools.head())
 
     # Mergování a zápis
     #current_schools = current_schools.drop("Longitude", "Latitude")
@@ -142,7 +144,8 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     current_schools.join(new_schools, "ERASMUS CODE", "anti").vstack(new_schools, in_place=True).write_excel("schools.xlsx")
     log.info("Done!")
 
-    return len(new_schools.filter(pl.col("Longitude").is_null() | pl.col("Latitude").is_null()))
+    #return len(new_schools.filter(pl.col("Longitude").is_null() | pl.col("Latitude").is_null()))
+    return 0
 
 # ------
 def parseLines(excel_file:any) -> List[str]:
@@ -185,4 +188,4 @@ def table_eraser(excel_file) -> int:
 
 if __name__ == "__main__":
     table_overwriter(easygui.fileopenbox("Vyberte soubor s novými školami: ", "Hi", filetypes="*.xlsx"))
-    #table_eraser(easygui.fileopenbox("Vybere soubor obsahující školy k vymazání.", filetypes=["*.xlsx", "*.txt"]))
+    #table_eraser(easygui.fileopenbox("Vyberte soubor obsahující školy k vymazání.", filetypes=["*.xlsx", "*.txt"]))
