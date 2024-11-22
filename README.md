@@ -18,7 +18,7 @@ Akutální web verze (NEREFLEKTUJE AKTUALIZACE): erasmus-proto.streamlit.app
 
 ### to-do 7. týden
 - **Excel tabulka**
-    - kódy oborů ... přidat do sloupce do schools.xlsx                                        - Matěj
+    - kódy oborů ... přidat do sloupce do schools.xlsx                                        [DONE]
     - ~~názvy univerzit ... vzít ty "oficiální", ne ty co byly zadány v ujepáckém souboru~~   [DONE]
       - Následek: Díry v lokacích; Upravit adresy dle openstreet nominatim api                - Matěj
     - ~~sloučení názvů oborů ... zbavit se d.n. a j.n. atd.~~                                 [DONE]

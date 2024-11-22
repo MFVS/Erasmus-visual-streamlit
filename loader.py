@@ -53,6 +53,34 @@ def rename_subs(new_schools:pl.DataFrame) -> pl.DataFrame:
     log.info(new_schools_temp.columns)
     return new_schools_temp
 
+def rename_subs_hard(new_schools:pl.DataFrame, old_schools:pl.DataFrame) -> pl.DataFrame:
+    temp_schools = new_schools.select("ERASMUS CODE", "Obor").with_columns(
+        pl.col("Obor").str.split(", ").name.keep()
+    ).explode("Obor").lazy().group_by("ERASMUS CODE").agg(pl.col("Obor")).collect().with_columns(
+        pl.col("Obor").list.join(", ").alias("Obor_neu")
+    ).drop("Obor").unique("ERASMUS CODE") 
+    old_schools = old_schools.select("ERASMUS CODE", "Obor").unique("ERASMUS CODE")
+
+    # Bear with me
+    # Vezmi obory z new_schools a old_schools, spoj je a vyřaď duplicitní hodnoty
+    mediator:pl.DataFrame = temp_schools.join(old_schools, "ERASMUS CODE", "left").with_columns(
+        pl.concat_str([pl.col("Obor_neu"), pl.col("Obor")], separator=", ", ignore_nulls=True).str.split(", ").list.unique().alias("Kódy oborů")
+    ).drop("Obor_neu", "Obor")
+
+    # Zduplikuj obory, druhý exploduj
+    mediator = mediator.rename({"Kódy oborů":"Obor"}).with_columns(pl.col("Obor").list.join(", ").alias("Kódy oborů")).explode("Obor")
+
+    # Získej tabulku jmen oborů, a očisti data (zbav se "- obory d. n." a variant toho, zbav se white space)
+    code_trans = pl.read_excel("cz_isced_f_systematicka_cast.xlsx")
+    code_trans = code_trans.with_columns(
+       pl.col("Název").str.replace_all(r"(?i)– obory [dj]\. n\.", "").str.strip_chars_end().name.keep()#.alias("Based") # Hranatá závorka je regulérní výraz: V podstatě to znamená "Pokud najdeš jedno písmeno z množiny"    
+    )#.drop("Název").rename({"Based":"Název"})
+
+    # Spoj všechno dohromady (jména oborů -> mediátor, obory a jména oborů (mediátor) -> new_schools)
+    mediator = mediator.join(code_trans, "Obor", "left").drop("Obor").rename({"Název":"Obory"})
+    return new_schools.unique("ERASMUS CODE").join(mediator, "ERASMUS CODE", "left").drop("Obor").rename({"Kódy oborů":"Obor"})
+
+
 # Funkce která přidává url
 def get_url(new_schools:pl.DataFrame, url_source:pl.DataFrame) -> pl.DataFrame:
     return new_schools.join(url_source, "ERASMUS CODE", "left").with_columns(
@@ -108,9 +136,9 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
             "Univerzita":pl.Series(dtype=pl.String),
             "Město":pl.Series(dtype=pl.String),
             "Stát":pl.Series(dtype=pl.String),
-            # "Longitude":pl.Series(dtype=pl.Float64),
-            # "Latitude":pl.Series(dtype=pl.Float64),
-            # "URL":pl.Series(dtype=pl.String),
+            "Longitude":pl.Series(dtype=pl.String),
+            "Latitude":pl.Series(dtype=pl.String),
+            "URL":pl.Series(dtype=pl.String),
             "Obor":pl.Series(dtype=pl.String),
             "Obory":pl.Series(dtype=pl.String)})
     else:
@@ -122,24 +150,27 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     # Sjednocení existujících sloupců
     new_schools = unite_cols(new_schools, addresses.select("ERASMUS CODE", "Univerzita"))
     log.info("Columns united.")
-
-    # Přejmenování oborů
-    new_schools = rename_subs(new_schools)
-    log.info("Renamed cols.")
     log.info(new_schools.head())
 
-    # # Získání url
-    # new_schools = get_url(new_schools, addresses.select("ERASMUS CODE", "Website Url"))
-    # log.info("Fetched url.")
-    # log.info(new_schools.head()) 
+    # Přejmenování oborů
+    #rename_subs(new_schools=new_schools).write_excel("schools_legacy.xlsx")
+    new_schools = rename_subs_hard(new_schools, current_schools)
+    log.info("Renamed cols.")
+    log.info(new_schools.filter((pl.col("ERASMUS CODE") == "BG ROUSSE01") | (pl.col("ERASMUS CODE") == "E JAEN01")).head())
 
-    # # Získání geokoordinací
-    # new_schools = get_coords(new_schools, addresses.select("ERASMUS CODE", "Address"))
-    # log.info("Fetched geocoords.")
-    # log.info(new_schools.head())
+    # Získání url
+    new_schools = get_url(new_schools, addresses.select("ERASMUS CODE", "Website Url"))
+    log.info("Fetched url.")
+    log.info(new_schools.head()) 
+
+    # Získání geokoordinací
+    new_schools = get_coords(new_schools, addresses.select("ERASMUS CODE", "Address"))
+    log.info("Fetched geocoords.")
+    log.info(new_schools.head())
 
     # Mergování a zápis
     #current_schools = current_schools.drop("Longitude", "Latitude")
+
     new_schools = new_schools.select(current_schools.columns)
     current_schools.join(new_schools, "ERASMUS CODE", "anti").vstack(new_schools, in_place=True).write_excel("schools.xlsx")
     log.info("Done!")
