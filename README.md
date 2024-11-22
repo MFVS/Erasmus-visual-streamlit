@@ -21,9 +21,10 @@ Akutální web verze (NEREFLEKTUJE AKTUALIZACE): erasmus-proto.streamlit.app
     - kódy oborů ... přidat do sloupce do schools.xlsx                                        [DONE]
     - ~~názvy univerzit ... vzít ty "oficiální", ne ty co byly zadány v ujepáckém souboru~~   [DONE]
       - Následek: Díry v lokacích; Upravit adresy dle openstreet nominatim api                - Matěj
+        POSLEDNÍ DÍRA: University of Aegean
     - ~~sloučení názvů oborů ... zbavit se d.n. a j.n. atd.~~                                 [DONE]
     - kód univerzity ... nebo smlouvy whatever, přidat jako sloupec                             [DONE?] ve schools.xlsx; ukázat i na stránce?                          
-    - Pokud více fakult bude obsahovat stejnou školu, obory se budou vzájemně přepisovat. Fix that shit
+    - ~~Pokud více fakult bude obsahovat stejnou školu, obory se budou vzájemně přepisovat. Fix that shit~~ [DONE]
 
 - **visualizer.py**
   - přidat katedry do filtru (řazení - katedra, obor, stát)
