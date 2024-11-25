@@ -32,6 +32,10 @@ def unite_cols(new_schools:pl.DataFrame, name_gen:pl.DataFrame) -> pl.DataFrame:
     shady_stuff:List[str] = ["Univerzita"] + list(column_translator.values())
     return new_schools.drop("ciziSkolaNazev").rename(column_translator).join(name_gen, "ERASMUS CODE", "left").select(shady_stuff)
 
+# Funkce která získá katedry
+def extract_dptmnts(new_schools:pl.DataFrame) -> pl.DataFrame:
+    
+
 # Funkce která předělává čísla oborů na jména
 def rename_subs(new_schools:pl.DataFrame) -> pl.DataFrame:
     # Tabulka se jmény oborů
@@ -133,6 +137,7 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     if not os.path.exists("schools.xlsx"):
         current_schools = pl.from_dict({
             "ERASMUS CODE":pl.Series(dtype=pl.String),
+            "Katedra":pl.Series(dtype=pl.String),
             "Univerzita":pl.Series(dtype=pl.String),
             "Město":pl.Series(dtype=pl.String),
             "Stát":pl.Series(dtype=pl.String),
@@ -150,6 +155,11 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     # Sjednocení existujících sloupců
     new_schools = unite_cols(new_schools, addresses.select("ERASMUS CODE", "Univerzita"))
     log.info("Columns united.")
+    log.info(new_schools.head())
+
+    # Přidání kateder
+    new_schools = extract_dptmnts(new_schools)
+    log.info("Departments extracted.")
     log.info(new_schools.head())
 
     # Přejmenování oborů
