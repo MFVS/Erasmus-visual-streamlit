@@ -23,7 +23,8 @@ def getColumnTrans() -> Dict[str, str]:
         "ciziSkolaZkratka":"ERASMUS CODE",
         "ciziSkolaMesto":"Město",
         "ciziSkolaStatNazev":"Stát",
-        "kodyIscedUvedeneUDomacichPodmSml":"Obor"
+        "kodyIscedUvedeneUDomacichPodmSml":"Obor",
+        "interniNazevSmlouvy":"Fullname"
     }
 
 # Funkce sjednoducíjící jména načítané a ukláadané tabulky
@@ -33,8 +34,14 @@ def unite_cols(new_schools:pl.DataFrame, name_gen:pl.DataFrame) -> pl.DataFrame:
     return new_schools.drop("ciziSkolaNazev").rename(column_translator).join(name_gen, "ERASMUS CODE", "left").select(shady_stuff)
 
 # Funkce která získá katedry
-def extract_dptmnts(new_schools:pl.DataFrame) -> pl.DataFrame:
-    
+def extract_dptmnts(new_schools:pl.DataFrame) -> pl.Series:
+    #test = new_schools.get_column("Fullname").str.strip_chars().str.split(",").slice("").list.join(",")
+    #log.info(test.to_list())
+    #log.info(new_schools.get_column("Fullname").to_list())
+    new_schools = new_schools.filter(pl.col("Fullname") != "STORNO").with_columns(pl.col("Fullname").str.replace_all(" ", "").str.split(",").list.slice(offset=1).alias("Katedry")).drop("Fullname")
+    log.info(new_schools.head())
+    return new_schools.with_columns(pl.col("Katedry").map_elements(lambda lst: [f"K{elem}" if elem[0] != "K" and elem not in ["NANO", "PŘF", "PRF", "PRF MIMO KGEO"] else elem for elem in lst], return_dtype=pl.List(pl.String)).list.join(", ").name.keep())
+    comp_func = lambda lst: [elem if elem[0] != "K" and elem not in ["NANO", "PRF", "PRF MIMO KGEO"] else f"K{elem}" for elem in lst]
 
 # Funkce která předělává čísla oborů na jména
 def rename_subs(new_schools:pl.DataFrame) -> pl.DataFrame:
@@ -127,8 +134,8 @@ def get_coords(new_schools:pl.DataFrame, address_source:pl.DataFrame) -> pl.Data
         df_maker["ERASMUS CODE"].append(loc)
         df_maker["Longitude"].append(str(relocations[loc].longitude) if relocations[loc] != None else None)
         df_maker["Latitude"].append(str(relocations[loc].latitude) if relocations[loc] != None else None)
-        reloc_info = f"{relocations[loc]} ({relocations[loc].latitude}, {relocations[loc].longitude})" if relocations[loc] != None else None
-        log.info(f"{loc} - {reloc_info}")
+        # reloc_info = f"{relocations[loc]} ({relocations[loc].latitude}, {relocations[loc].longitude})" if relocations[loc] != None else None
+        #log.info(f"{loc} - {reloc_info}")
     return new_schools.join(pl.from_dict(df_maker), "ERASMUS CODE", "left")
 
 def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a následně vrátí počet řádků s nevalidními koordinacemi
@@ -137,7 +144,7 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     if not os.path.exists("schools.xlsx"):
         current_schools = pl.from_dict({
             "ERASMUS CODE":pl.Series(dtype=pl.String),
-            "Katedra":pl.Series(dtype=pl.String),
+            "Katedry":pl.Series(dtype=pl.String),
             "Univerzita":pl.Series(dtype=pl.String),
             "Město":pl.Series(dtype=pl.String),
             "Stát":pl.Series(dtype=pl.String),
@@ -160,7 +167,7 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     # Přidání kateder
     new_schools = extract_dptmnts(new_schools)
     log.info("Departments extracted.")
-    log.info(new_schools.head())
+    log.info(new_schools.head(15))
 
     # Přejmenování oborů
     #rename_subs(new_schools=new_schools).write_excel("schools_legacy.xlsx")
@@ -177,6 +184,7 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     new_schools = get_coords(new_schools, addresses.select("ERASMUS CODE", "Address"))
     log.info("Fetched geocoords.")
     log.info(new_schools.head())
+    log.info(new_schools.columns)
 
     # Mergování a zápis
     #current_schools = current_schools.drop("Longitude", "Latitude")

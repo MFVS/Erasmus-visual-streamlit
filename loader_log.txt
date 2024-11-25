@@ -1,104 +1,83 @@
-2024-11-22 15:33 - INFO - Tables read successfully.
-2024-11-22 15:33 - INFO - Columns united.
-2024-11-22 15:33 - INFO - shape: (5, 5)
-┌─────────────────────────────────┬──────────────┬───────────┬──────────────────────┬──────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město     ┆ Stát                 ┆ Obor     │
-│ ---                             ┆ ---          ┆ ---       ┆ ---                  ┆ ---      │
-│ str                             ┆ str          ┆ str       ┆ str                  ┆ str      │
-╞═════════════════════════════════╪══════════════╪═══════════╪══════════════════════╪══════════╡
-│ AKDENIZ UNIVERSITY              ┆ TR ANTALYA01 ┆ Antalya   ┆ Turecká republika    ┆ 051      │
-│ Alanya Üniversitesi             ┆ TR ANTALYA04 ┆ Alanya    ┆ Turecká republika    ┆ 061      │
-│ SVEUCILISTE ALGEBRA             ┆ HR ZAGREB11  ┆ ZAGREB    ┆ Chorvatská republika ┆ 0610     │
-│ CANAKKALE ONSEKIZ MART UNIVERS… ┆ TR CANAKKA01 ┆ Canakkale ┆ Turecká republika    ┆ 0510     │
-│ DOKUZ EYLUL UNIVERSITESI        ┆ TR IZMIR01   ┆ Izmir     ┆ Turecká republika    ┆ 051, 054 │
-└─────────────────────────────────┴──────────────┴───────────┴──────────────────────┴──────────┘
-2024-11-22 15:33 - INFO - Renamed cols.
-2024-11-22 15:33 - INFO - shape: (3, 6)
-┌─────────────────────────────────┬──────────────┬────────┬─────────────────────┬──────────────────┬─────────────────────────────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město  ┆ Stát                ┆ Obor             ┆ Obory                           │
-│ ---                             ┆ ---          ┆ ---    ┆ ---                 ┆ ---              ┆ ---                             │
-│ str                             ┆ str          ┆ str    ┆ str                 ┆ str              ┆ str                             │
-╞═════════════════════════════════╪══════════════╪════════╪═════════════════════╪══════════════════╪═════════════════════════════════╡
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ 0540, 0533, 0610 ┆ Matematika a statistika         │
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ 0540, 0533, 0610 ┆ Fyzika                          │
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ 0540, 0533, 0610 ┆ Informační a komunikační techn… │
-└─────────────────────────────────┴──────────────┴────────┴─────────────────────┴──────────────────┴─────────────────────────────────┘
-2024-11-22 15:33 - INFO - Fetched url.
-2024-11-22 15:33 - INFO - shape: (5, 7)
-┌─────────────────────────────────┬──────────────┬──────────┬────────────────────────────┬───────────────────────────┬─────────────────────────────────┬─────────────────────────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město    ┆ Stát                       ┆ Obor                      ┆ Obory                           ┆ URL                         │
-│ ---                             ┆ ---          ┆ ---      ┆ ---                        ┆ ---                       ┆ ---                             ┆ ---                         │
-│ str                             ┆ str          ┆ str      ┆ str                        ┆ str                       ┆ str                             ┆ str                         │
-╞═════════════════════════════════╪══════════════╪══════════╪════════════════════════════╪═══════════════════════════╪═════════════════════════════════╪═════════════════════════════╡
-│ JULIUS-MAXIMILIANS-UNIVERSITAT… ┆ D  WURZBUR01 ┆ Würzburg ┆ Spolková republika Německo ┆ 051, 0532, 061, 054, 0533 ┆ Biologické a příbuzné vědy      ┆ http://www.uni-wuerzburg.de │
-│ JULIUS-MAXIMILIANS-UNIVERSITAT… ┆ D  WURZBUR01 ┆ Würzburg ┆ Spolková republika Německo ┆ 051, 0532, 061, 054, 0533 ┆ Vědy o Zemi                     ┆ http://www.uni-wuerzburg.de │
-│ JULIUS-MAXIMILIANS-UNIVERSITAT… ┆ D  WURZBUR01 ┆ Würzburg ┆ Spolková republika Německo ┆ 051, 0532, 061, 054, 0533 ┆ Informační a komunikační techn… ┆ http://www.uni-wuerzburg.de │
-│ JULIUS-MAXIMILIANS-UNIVERSITAT… ┆ D  WURZBUR01 ┆ Würzburg ┆ Spolková republika Německo ┆ 051, 0532, 061, 054, 0533 ┆ Matematika a statistika         ┆ http://www.uni-wuerzburg.de │
-│ JULIUS-MAXIMILIANS-UNIVERSITAT… ┆ D  WURZBUR01 ┆ Würzburg ┆ Spolková republika Německo ┆ 051, 0532, 061, 054, 0533 ┆ Fyzika                          ┆ http://www.uni-wuerzburg.de │
-└─────────────────────────────────┴──────────────┴──────────┴────────────────────────────┴───────────────────────────┴─────────────────────────────────┴─────────────────────────────┘
-2024-11-22 15:34 - INFO - TR ANTALYA01 - Akdeniz Üniversitesi, 735 Sokak, Pınarbaşı Mahallesi, Konyaaltı, Antalya, Akdeniz Bölgesi, 07070, Türkiye (36.8937844, 30.650947292742977)
-2024-11-22 15:34 - INFO - E  MALAGA01 - Universidad de Málaga, 2, Cruz de Humilladero, Málaga, Málaga-Costa del Sol, Málaga, Andalucía, 29071, España (36.7165576, -4.495336390634675)
-2024-11-22 15:34 - INFO - S  UMEA01 - Umeå universitet, Gösta Skoglunds väg, Lilljansberget, Universitets- och sjukhusområdet, Umeå, Umeå kommun, Västerbottens län, 907 13, Sverige (63.82177625, 20.304316311493196)
-2024-11-22 15:34 - INFO - F  TOULOUS15 - École d'ingénieurs de Purpan - Toulouse INP, 75 voie du Toec, Périphérique Extérieur, Griffoulet, Lardenne - Pradette - Basso Cambo, Toulouse Ouest, Toulouse, Haute-Garonne, Occitanie, France métropolitaine, 31300, France (43.6024928, 1.3965155228102595)
-2024-11-22 15:34 - INFO - SK PRESOV01 - Prešovská univerzita v Prešove, Francisciho, Sídlisko Duklianskych hrdinov, Staré Mesto, Prešov, okres Prešov, Prešovský kraj, Východné Slovensko, 080 01, Slovensko (48.989434, 21.235015177927682)
-2024-11-22 15:34 - INFO - HU BUDAPES01 - Eötvös Loránd Tudományegyetem Bölcsészettudományi Kar, 4-8, Múzeum körút, Pest, Belváros, V. kerület, Budapest, Közép-Magyarország, 1088, Magyarország (47.4934799, 19.061899330588723)
-2024-11-22 15:34 - INFO - E  MADRID04 - Universidad Autónoma de Madrid (U.A.M.) Campus de Cantoblanco, Avenida de Francisco Tomás y Valiente, El Goloso, Fuencarral-El Pardo, Madrid, Comunidad de Madrid, 28049, España (40.5453765, -3.6949577655963672)
-2024-11-22 15:34 - INFO - TR ESKISEH03 - Eskişehir Teknik Üniversitesi 2 Eylül Kampüsü, Eskişehir- Sarıcakaya yolu, Gazipaşa Mahallesi, Tepebaşı, Eskişehir, İç Anadolu Bölgesi, 26220, Türkiye (39.8168591, 30.53174476235694)
-2024-11-22 15:34 - INFO - D  KOTHEN01 - Hochschule Anhalt, Hardenbergstraße, Siedlung, Dessau, Dessau-Roßlau, Sachsen-Anhalt, 06846, Deutschland (51.83977985, 12.228052275548063)
-2024-11-22 15:34 - INFO - D  DRESDEN02 - Technische Universität Dresden, Kreischa, Sächsische Schweiz-Osterzgebirge, Sachsen, 01731, Deutschland (51.028276500000004, 13.735982754935176)
-2024-11-22 15:34 - INFO - PL LODZ01 - Uniwersytet Łódzki, Williama H. Lindleya, Śródmieście-Wschód, Fabryczna, Łódź-Śródmieście, Łódź, województwo łódzkie, 90-131, Polska (51.771323699999996, 19.47407557561835)
-2024-11-22 15:34 - INFO - EE TALLINN05 - Tallinna Ülikool, Narva mnt, Raua, Kesklinna linnaosa, Tallinn, Harju maakond, 10120, Eesti (59.4393125, 24.772347058941484)
-2024-11-22 15:34 - INFO - RO BUCURES09 - Universitatea din București, 4-12, Bulevardul Regina Elisabeta, Colțea, Centrul Istoric, Sector 3, București, 030018, România (44.43564445, 26.10092625223488)
-2024-11-22 15:34 - INFO - D  DORTMUN01 - Technische Universität Dortmund, Rahmkesweg, Eichlinghofen, Hombruch, Dortmund, Nordrhein-Westfalen, 44227, Deutschland (51.49148435, 7.4122738886856805)
-2024-11-22 15:34 - INFO - TR CANAKKA01 - Çanakkale Onsekiz Mart Üniversitesi, Çanakkale 18 Mart Ünv., Barbaros Mahallesi, Çanakkale Merkez, Çanakkale, Marmara Bölgesi, 17020, Türkiye (40.1120066, 26.421464811380968)
-2024-11-22 15:34 - INFO - SK TRNAVA02 - 577/2, Námestie Jozefa Herdu, Na hlinách, Trnava, Trnavský kraj, Západné Slovensko, 917 01, Slovensko (48.3831974, 17.58899776400044)
-2024-11-22 15:34 - INFO - I  CAMERIN01 - Università degli Studi di Camerino, Amandola, Fermo, Marche, 63857, Italia (43.13963305, 13.067215488690735)
-2024-11-22 15:34 - INFO - I  TRIESTE01 - Università degli Studi di Trieste, Via Cesare Cantù, Case degli Americani, Roiano-Gretta-Barcola-Cologna-Scorcola, Conconello / Ferlugi, Trieste, Friuli-Venezia Giulia, 34134, Italia (45.6601694, 13.794792540211322)
-2024-11-22 15:34 - INFO - D  LEIPZIG01 - Universität Leipzig, Augustusplatz, Zentrum, Mitte, Leipzig, Sachsen, 04109, Deutschland (51.33845385, 12.37863856850984)
-2024-11-22 15:34 - INFO - RO BUCURES18 - Universitatea Româno-Americană, 1B, Bulevardul Expoziției, Domenii, Sector 1, București, 012101, România (44.472983799999994, 26.065691841236948)
-2024-11-22 15:34 - INFO - PL OPOLE01 - Uniwersytet Opolski, Muzealna, Dzielnica Generalska, Stare Miasto, Opole, województwo opolskie, 45-026, Polska (50.6726608, 17.93179398062986)
-2024-11-22 15:34 - INFO - D  GIESSEN01 - Justus-Liebig-Universität - Campusbereich Philosophikum II, 10, Otto-Behaghel-Straße, Schiffenberger Tal, Gießen, Landkreis Gießen, Hessen, 35394, Deutschland (50.573589150000004, 8.699976819474603)
-2024-11-22 15:34 - INFO - SI KOPER03 - Univerza na Primorskem / Università del Litorale, Santorjeva ulica / Via Santorio Santorio, Koper / Capodistria (naselje), Koper / Capodistria, Upravna enota Koper / Unità amministrativa Capodistria, 6000, Slovenija (45.5480962, 13.7268097)
-2024-11-22 15:34 - INFO - SK BRATISL02 - Univerzita Komenského v Bratislave, Šafárikovo námestie, Príboj, Historické jadro, Bratislava, okres Bratislava I, Bratislava, Bratislavský kraj, 811 02, Slovensko (48.1412324, 17.1161819)
-2024-11-22 15:34 - INFO - TR KARS01 - Kafkas Üniversitesi, Kars-Ardahan yolu, Şehitler Mahallesi, Kars Merkez, Kars, Doğu Anadolu Bölgesi, Türkiye (40.58094665, 43.05656720268237)
-2024-11-22 15:34 - INFO - LV JELGAVA01 - Latvijas Biozinātņu un tehnoloģiju universitāte, 2, Lielā iela, Prospektu gals, Jelgava, LV-3001, Latvija (56.655968, 23.7323561)
-2024-11-22 15:34 - INFO - D  WURZBUR01 - Universität Würzburg, Bodelschwinghstraße, Keesburg, Frauenland, Würzburg, Bayern, 97074, Deutschland (49.780603150000005, 9.971655766351642)
-2024-11-22 15:34 - INFO - TR TRABZON04 - Trabzon Üniversitesi Fatih Eğitim Kampüsü, Atatürk Bulvarı Bulvarı, Söğütlü Mahallesi, Osmanbaba, Akçaabat, Trabzon, Karadeniz Bölgesi, 61310, Türkiye (41.00981805, 39.60852063412131)
-2024-11-22 15:34 - INFO - HR ZAGREB11 - Visoko učilište Algebra, 24, Gradišćanska ulica, Mjesni odbor "Bartol Kašić", Gradska četvrt Črnomerec, Zagreb, Grad Zagreb, 10000, Hrvatska (45.810512700000004, 15.941112901216494)
-2024-11-22 15:34 - INFO - PL POZNAN01 - Collegium Minus, 1, Henryka Wieniawskiego, Święty Marcin, Stare Miasto, Poznań, województwo wielkopolskie, 61-712, Polska (52.40816565, 16.915612725194535)
-2024-11-22 15:34 - INFO - PL GDANSK01 - Uniwersytet Gdański, Aleja Grunwaldzka, Olivia Centre, Oliwa, Gdańsk, województwo pomorskie, 80-309, Polska (54.396404950000004, 18.57400997579134)
-2024-11-22 15:34 - INFO - PL SLUPSK01 - 22, Krzysztofa Arciszewskiego, Osiedle Akademickie, Słupsk, województwo pomorskie, 76-200, Polska (54.4547071, 17.0423326)
-2024-11-22 15:34 - INFO - LT KAUNAS01 - Vytauto Didžiojo universitetas, 28, S. Daukanto g., Naujamiestis, Centro seniūnija, Kaunas, Kauno miesto savivaldybė, Kauno apskritis, 44248, Lietuva (54.8984353, 23.91439374490837)
-2024-11-22 15:34 - INFO - F  ANGERS08 - École Supérieure d'Agricultures, 55, Rue Rabelais, Justices - Madeleine - Saint-Léonard, Angers, Maine-et-Loire, Pays de la Loire, France métropolitaine, 49000, France (47.459291300000004, -0.5441803899948905)
-2024-11-22 15:34 - INFO - P  LEIRIA01 - Rua General Norton de Matos, Quinta de São Bartolomeu, Cruz d'Areia, Leiria, Pousos, Barreira e Cortes, Leiria, 2410-272, Portugal (39.737149106966484, -8.8105226085993)
-2024-11-22 15:34 - INFO - TR IZMIR01 - Dokuz Eylül Üniversitesi, Mustafa Münir Birsel Sokağı, Kültür Mahallesi, İzmir, Konak, İzmir, Ege Bölgesi, 35220, Türkiye (38.43052955, 27.13696496633385)
-2024-11-22 15:34 - INFO - S  UPPSALA01 - Uppsala universitet, 3, Biskopsgatan, Främre Luthagen, Fjärdingen, Uppsala, Uppsala kommun, Uppsala län, 753 11, Sverige (59.8576902, 17.6297861)
-2024-11-22 15:34 - INFO - I  URBINO01 - Dipartimento Scienze Biomolecolari, 2, Via Aurelio Saffi, Urbino, Pesaro e Urbino, Marche, 61029, Italia (43.723241, 12.6369445)
-2024-11-22 15:34 - INFO - BG ROUSSE01 - Русенски университет "Ангел Кънчев", 8, Студентска, ж.к. Здравец-север 1, ж.к. Възраждане - Юг, Русе, 7017, България (43.85348155, 25.972612663551303)
-2024-11-22 15:34 - INFO - PL CZESTOC01 - Politechnika Częstochowska, Aleja Armii Krajowej, Osiedle Tysiąclecia, Tysiąclecie, Częstochowa, województwo śląskie, 42-201, Polska (50.822852350000005, 19.115807327479168)
-2024-11-22 15:34 - INFO - RO TIMISOA01 - Universitatea de Vest din Timișoara, Bulevardul Vasile Pârvan, Elisabetin, Timișoara, Timiș, 300224, România (45.74732925, 21.23126099621941)
-2024-11-22 15:34 - INFO - PL LODZ02 - Politechnika Łódzka, Profesora Bohdana Stefanowskiego, Stare Polesie, Politechniczna, Łódź-Polesie, Łódź, województwo łódzkie, 90-537, Polska (51.752577, 19.4529575)
-2024-11-22 15:34 - INFO - TR ANTALYA04 - Alanya Alaaddin Keykubat Üniversitesi, Karapınar Cd., Alanya, Antalya, Akdeniz Bölgesi, 07460, Türkiye (36.52653915, 32.0844180072318)
-2024-11-22 15:34 - INFO - RS NOVISAD02 - Универзитет у Новом Саду, Булевар Цара Лазара, МЗ Лиман, Лиман, Нови Сад, Град Нови Сад, Јужнобачки управни округ, Војводина, 21101, Србија (45.246226, 19.851175531732203)
-2024-11-22 15:34 - INFO - D  ROSTOCK01 - Universität Rostock, Zingst, Vorpommern-Rügen, Mecklenburg-Vorpommern, 18374, Deutschland (54.4308835, 12.6856683)
-2024-11-22 15:34 - INFO - E  JAEN01 - Universidad de Jaén, Avenida Antonio Pascual Acosta, Jaén, Andalucía, 23009, España (37.78820865, -3.776633970633042)
-2024-11-22 15:34 - INFO - SK BANSKA01 - Univerzita Mateja Bela v Banskej Bystrici, 739/12, Národná, Banská Bystrica, okres Banská Bystrica, Banskobystrický kraj, Stredné Slovensko, 974 04, Slovensko (48.73317955, 19.145530921337212)
-2024-11-22 15:34 - INFO - HR SPLIT01 - Sveučilište u Splitu, Cvite Fiskovića, Split 3, Split, Grad Split, Splitsko-dalmatinska županija, 21111, Hrvatska (43.5117478, 16.46760154890833)
-2024-11-22 15:34 - INFO - D  KAISERS01 - Rheinland-Pfälzische Technische Universität, Campus Kaiserslautern, Paul-Ehrlich-Straße, PRE Uni-Park, Lämmchesberg, Kaiserslautern, Rheinland-Pfalz, 67663, Deutschland (49.4246142, 7.754214153273509)
-2024-11-22 15:34 - INFO - G  ATHINE41 - None
-2024-11-22 15:34 - INFO - SK RUZOMBE01 - Katolícka univerzita v Ružomberku - Pedagogická fakulta, 15, Bottova, Levoča, okres Levoča, Prešovský kraj, Východné Slovensko, 054 01, Slovensko (49.0223689, 20.5875762)
-2024-11-22 15:34 - INFO - D  SIGMARI01 - Hochschule Albstadt-Sigmaringen Campus Sigmaringen, An der Brunnenstube, Sigmaringen, Gemeindeverwaltungsverband Sigmaringen, Landkreis Sigmaringen, Baden-Württemberg, 72488, Deutschland (48.08715495, 9.239475660191882)
-2024-11-22 15:34 - INFO - Fetched geocoords.
-2024-11-22 15:34 - INFO - shape: (5, 9)
-┌─────────────────────────────────┬──────────────┬──────────┬────────────────────────────┬───┬─────────────────────────────────┬─────────────────────────────┬───────────────────┬────────────────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město    ┆ Stát                       ┆ … ┆ Obory                           ┆ URL                         ┆ Longitude         ┆ Latitude           │
-│ ---                             ┆ ---          ┆ ---      ┆ ---                        ┆   ┆ ---                             ┆ ---                         ┆ ---               ┆ ---                │
-│ str                             ┆ str          ┆ str      ┆ str                        ┆   ┆ str                             ┆ str                         ┆ str               ┆ str                │
-╞═════════════════════════════════╪══════════════╪══════════╪════════════════════════════╪═══╪═════════════════════════════════╪═════════════════════════════╪═══════════════════╪════════════════════╡
-│ JULIUS-MAXIMILIANS-UNIVERSITAT… ┆ D  WURZBUR01 ┆ Würzburg ┆ Spolková republika Německo ┆ … ┆ Biologické a příbuzné vědy      ┆ http://www.uni-wuerzburg.de ┆ 9.971655766351642 ┆ 49.780603150000005 │
-│ JULIUS-MAXIMILIANS-UNIVERSITAT… ┆ D  WURZBUR01 ┆ Würzburg ┆ Spolková republika Německo ┆ … ┆ Vědy o Zemi                     ┆ http://www.uni-wuerzburg.de ┆ 9.971655766351642 ┆ 49.780603150000005 │
-│ JULIUS-MAXIMILIANS-UNIVERSITAT… ┆ D  WURZBUR01 ┆ Würzburg ┆ Spolková republika Německo ┆ … ┆ Informační a komunikační techn… ┆ http://www.uni-wuerzburg.de ┆ 9.971655766351642 ┆ 49.780603150000005 │
-│ JULIUS-MAXIMILIANS-UNIVERSITAT… ┆ D  WURZBUR01 ┆ Würzburg ┆ Spolková republika Německo ┆ … ┆ Matematika a statistika         ┆ http://www.uni-wuerzburg.de ┆ 9.971655766351642 ┆ 49.780603150000005 │
-│ JULIUS-MAXIMILIANS-UNIVERSITAT… ┆ D  WURZBUR01 ┆ Würzburg ┆ Spolková republika Německo ┆ … ┆ Fyzika                          ┆ http://www.uni-wuerzburg.de ┆ 9.971655766351642 ┆ 49.780603150000005 │
-└─────────────────────────────────┴──────────────┴──────────┴────────────────────────────┴───┴─────────────────────────────────┴─────────────────────────────┴───────────────────┴────────────────────┘
-2024-11-22 15:34 - INFO - Done!
+2024-11-25 15:04 - INFO - Tables read successfully.
+2024-11-25 15:04 - INFO - Columns united.
+2024-11-25 15:04 - INFO - shape: (5, 6)
+┌─────────────────────────────────┬──────────────┬──────────┬────────────────────────────┬──────────┬────────────────────────┐
+│ Univerzita                      ┆ ERASMUS CODE ┆ Město    ┆ Stát                       ┆ Obor     ┆ Fullname               │
+│ ---                             ┆ ---          ┆ ---      ┆ ---                        ┆ ---      ┆ ---                    │
+│ str                             ┆ str          ┆ str      ┆ str                        ┆ str      ┆ str                    │
+╞═════════════════════════════════╪══════════════╪══════════╪════════════════════════════╪══════════╪════════════════════════╡
+│ AKDENIZ UNIVERSITY              ┆ TR ANTALYA01 ┆ Antalya  ┆ Turecká republika          ┆ 051      ┆ TR ANTALYA01, KBI      │
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse   ┆ Bulharská republika        ┆ 061      ┆ BG ROUSSE01, KI, KMA   │
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse   ┆ Bulharská republika        ┆ 0610     ┆ BG ROUSSE01, NANO      │
+│ TECHNISCHE UNIVERSITAT DORTMUN… ┆ D  DORTMUN01 ┆ Dortmund ┆ Spolková republika Německo ┆ 0510     ┆ D  DORTMUN01, PRF      │
+│ TECHNISCHE UNIVERSITAET DRESDE… ┆ D  DRESDEN02 ┆ Dresden  ┆ Spolková republika Německo ┆ 051, 054 ┆ D  DRESDEN02, KBI,KGEO │
+└─────────────────────────────────┴──────────────┴──────────┴────────────────────────────┴──────────┴────────────────────────┘
+2024-11-25 15:04 - INFO - shape: (5, 6)
+┌─────────────────────────────────┬──────────────┬──────────┬────────────────────────────┬──────────┬─────────────────┐
+│ Univerzita                      ┆ ERASMUS CODE ┆ Město    ┆ Stát                       ┆ Obor     ┆ Katedry         │
+│ ---                             ┆ ---          ┆ ---      ┆ ---                        ┆ ---      ┆ ---             │
+│ str                             ┆ str          ┆ str      ┆ str                        ┆ str      ┆ list[str]       │
+╞═════════════════════════════════╪══════════════╪══════════╪════════════════════════════╪══════════╪═════════════════╡
+│ AKDENIZ UNIVERSITY              ┆ TR ANTALYA01 ┆ Antalya  ┆ Turecká republika          ┆ 051      ┆ ["KBI"]         │
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse   ┆ Bulharská republika        ┆ 061      ┆ ["KI", "KMA"]   │
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse   ┆ Bulharská republika        ┆ 0610     ┆ ["NANO"]        │
+│ TECHNISCHE UNIVERSITAT DORTMUN… ┆ D  DORTMUN01 ┆ Dortmund ┆ Spolková republika Německo ┆ 0510     ┆ ["PRF"]         │
+│ TECHNISCHE UNIVERSITAET DRESDE… ┆ D  DRESDEN02 ┆ Dresden  ┆ Spolková republika Německo ┆ 051, 054 ┆ ["KBI", "KGEO"] │
+└─────────────────────────────────┴──────────────┴──────────┴────────────────────────────┴──────────┴─────────────────┘
+2024-11-25 15:04 - INFO - Departments extracted.
+2024-11-25 15:04 - INFO - shape: (15, 6)
+┌─────────────────────────────────┬──────────────┬──────────┬────────────────────────────┬───────────────────────────┬───────────┐
+│ Univerzita                      ┆ ERASMUS CODE ┆ Město    ┆ Stát                       ┆ Obor                      ┆ Katedry   │
+│ ---                             ┆ ---          ┆ ---      ┆ ---                        ┆ ---                       ┆ ---       │
+│ str                             ┆ str          ┆ str      ┆ str                        ┆ str                       ┆ str       │
+╞═════════════════════════════════╪══════════════╪══════════╪════════════════════════════╪═══════════════════════════╪═══════════╡
+│ AKDENIZ UNIVERSITY              ┆ TR ANTALYA01 ┆ Antalya  ┆ Turecká republika          ┆ 051                       ┆ KBI       │
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse   ┆ Bulharská republika        ┆ 061                       ┆ KI, KMA   │
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse   ┆ Bulharská republika        ┆ 0610                      ┆ NANO      │
+│ TECHNISCHE UNIVERSITAT DORTMUN… ┆ D  DORTMUN01 ┆ Dortmund ┆ Spolková republika Německo ┆ 0510                      ┆ PRF       │
+│ TECHNISCHE UNIVERSITAET DRESDE… ┆ D  DRESDEN02 ┆ Dresden  ┆ Spolková republika Německo ┆ 051, 054                  ┆ KBI, KGEO │
+│ …                               ┆ …            ┆ …        ┆ …                          ┆ …                         ┆ …         │
+│ JUSTUS-LIEBIG-UNIVERSITAET GIE… ┆ D  GIESSEN01 ┆ Giessen  ┆ Spolková republika Německo ┆ 051, 0532                 ┆ KGEO      │
+│ UNIVERSIDAD DE JAEN             ┆ E  JAEN01    ┆ Jaén     ┆ Španělské království       ┆ 05, 061                   ┆ KBI       │
+│ UNIVERSIDAD DE JAEN             ┆ E  JAEN01    ┆ Jaén     ┆ Španělské království       ┆ 051, 0532, 0533, 054, 061 ┆ KGEO      │
+│ UNIVERSIDAD AUTONOMA DE MADRID  ┆ E  MADRID04  ┆ Madrid   ┆ Španělské království       ┆ 0532                      ┆ KBI       │
+│ UNIVERSIDAD DE MALAGA           ┆ E  MALAGA01  ┆ Malaga   ┆ Španělské království       ┆ 054                       ┆ KGEO      │
+└─────────────────────────────────┴──────────────┴──────────┴────────────────────────────┴───────────────────────────┴───────────┘
+2024-11-25 15:04 - INFO - Renamed cols.
+2024-11-25 15:04 - INFO - shape: (2, 7)
+┌─────────────────────────────────┬──────────────┬────────┬─────────────────────┬─────────┬───────────┬─────────────────────────────────┐
+│ Univerzita                      ┆ ERASMUS CODE ┆ Město  ┆ Stát                ┆ Katedry ┆ Obor      ┆ Obory                           │
+│ ---                             ┆ ---          ┆ ---    ┆ ---                 ┆ ---     ┆ ---       ┆ ---                             │
+│ str                             ┆ str          ┆ str    ┆ str                 ┆ str     ┆ str       ┆ str                             │
+╞═════════════════════════════════╪══════════════╪════════╪═════════════════════╪═════════╪═══════════╪═════════════════════════════════╡
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ KI, KMA ┆ 0610, 061 ┆ Informační a komunikační techn… │
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ KI, KMA ┆ 0610, 061 ┆ Informační a komunikační techn… │
+└─────────────────────────────────┴──────────────┴────────┴─────────────────────┴─────────┴───────────┴─────────────────────────────────┘
+2024-11-25 15:04 - INFO - Fetched url.
+2024-11-25 15:04 - INFO - shape: (5, 8)
+┌─────────────────────────────────┬──────────────┬─────────────────┬─────────────────────┬─────────┬──────────────────┬───────────────────────────┬───────────────────────────┐
+│ Univerzita                      ┆ ERASMUS CODE ┆ Město           ┆ Stát                ┆ Katedry ┆ Obor             ┆ Obory                     ┆ URL                       │
+│ ---                             ┆ ---          ┆ ---             ┆ ---                 ┆ ---     ┆ ---              ┆ ---                       ┆ ---                       │
+│ str                             ┆ str          ┆ str             ┆ str                 ┆ str     ┆ str              ┆ str                       ┆ str                       │
+╞═════════════════════════════════╪══════════════╪═════════════════╪═════════════════════╪═════════╪══════════════════╪═══════════════════════════╪═══════════════════════════╡
+│ KAFKAS UNIVERSITESI             ┆ TR KARS01    ┆ Kars            ┆ Turecká republika   ┆ KMA     ┆ 0511, 0512, 0532 ┆ Biologie                  ┆ https://www.kafkas.edu.tr │
+│ KAFKAS UNIVERSITESI             ┆ TR KARS01    ┆ Kars            ┆ Turecká republika   ┆ KMA     ┆ 0511, 0512, 0532 ┆ Biochemie                 ┆ https://www.kafkas.edu.tr │
+│ KAFKAS UNIVERSITESI             ┆ TR KARS01    ┆ Kars            ┆ Turecká republika   ┆ KMA     ┆ 0511, 0512, 0532 ┆ Vědy o Zemi               ┆ https://www.kafkas.edu.tr │
+│ LATVIJAS BIOZINATNU UN TEHNOLO… ┆ LV JELGAVA01 ┆ Jelgava         ┆ Lotyšská republika  ┆ KGEO    ┆ 0731             ┆ Architektura a urbanismus ┆ https://www.lbtu.lv       │
+│ UNIVERZITA MATEJA BELA V BANSK… ┆ SK BANSKA01  ┆ Bánská Bystrica ┆ Slovenská republika ┆ KMA     ┆ 0532             ┆ Vědy o Zemi               ┆ https://www.umb.sk        │
+└─────────────────────────────────┴──────────────┴─────────────────┴─────────────────────┴─────────┴──────────────────┴───────────────────────────┴───────────────────────────┘
+2024-11-25 15:04 - INFO - Fetched geocoords.
+2024-11-25 15:04 - INFO - shape: (5, 10)
+┌─────────────────────────────────┬──────────────┬─────────────────┬─────────────────────┬───┬───────────────────────────┬───────────────────────────┬────────────────────┬─────────────┐
+│ Univerzita                      ┆ ERASMUS CODE ┆ Město           ┆ Stát                ┆ … ┆ Obory                     ┆ URL                       ┆ Longitude          ┆ Latitude    │
+│ ---                             ┆ ---          ┆ ---             ┆ ---                 ┆   ┆ ---                       ┆ ---                       ┆ ---                ┆ ---         │
+│ str                             ┆ str          ┆ str             ┆ str                 ┆   ┆ str                       ┆ str                       ┆ str                ┆ str         │
+╞═════════════════════════════════╪══════════════╪═════════════════╪═════════════════════╪═══╪═══════════════════════════╪═══════════════════════════╪════════════════════╪═════════════╡
+│ KAFKAS UNIVERSITESI             ┆ TR KARS01    ┆ Kars            ┆ Turecká republika   ┆ … ┆ Biologie                  ┆ https://www.kafkas.edu.tr ┆ 43.05656720268237  ┆ 40.58094665 │
+│ KAFKAS UNIVERSITESI             ┆ TR KARS01    ┆ Kars            ┆ Turecká republika   ┆ … ┆ Biochemie                 ┆ https://www.kafkas.edu.tr ┆ 43.05656720268237  ┆ 40.58094665 │
+│ KAFKAS UNIVERSITESI             ┆ TR KARS01    ┆ Kars            ┆ Turecká republika   ┆ … ┆ Vědy o Zemi               ┆ https://www.kafkas.edu.tr ┆ 43.05656720268237  ┆ 40.58094665 │
+│ LATVIJAS BIOZINATNU UN TEHNOLO… ┆ LV JELGAVA01 ┆ Jelgava         ┆ Lotyšská republika  ┆ … ┆ Architektura a urbanismus ┆ https://www.lbtu.lv       ┆ 23.7323561         ┆ 56.655968   │
+│ UNIVERZITA MATEJA BELA V BANSK… ┆ SK BANSKA01  ┆ Bánská Bystrica ┆ Slovenská republika ┆ … ┆ Vědy o Zemi               ┆ https://www.umb.sk        ┆ 19.145530921337212 ┆ 48.73317955 │
+└─────────────────────────────────┴──────────────┴─────────────────┴─────────────────────┴───┴───────────────────────────┴───────────────────────────┴────────────────────┴─────────────┘
+2024-11-25 15:04 - INFO - ['Univerzita', 'ERASMUS CODE', 'Město', 'Stát', 'Katedry', 'Obor', 'Obory', 'URL', 'Longitude', 'Latitude']
+2024-11-25 15:04 - INFO - Done!
