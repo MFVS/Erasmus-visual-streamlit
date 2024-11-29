@@ -2,13 +2,14 @@ import streamlit as st
 import polars as pl
 import folium as fo
 from streamlit_folium import st_folium
-from typing import Dict, List
+from typing import Dict #, List
 
 
 #st.set_page_config(layout="wide")
 
 schools_source = pl.read_excel("schools.xlsx")
-filter_targets = ["Univerzita", "Obory", "Stát"] # Mělo by reflektovat všechny potenciální filtrované sloupečky
+filter_targets = ["Katedry", "Univerzita", "Obory", "Stát"] # Mělo by reflektovat všechny potenciální filtrované sloupečky
+display_targets = ["Katedry", "Univerzita", "Obory", "Stát", "URL"]
 
 #TODO: Obecně hodně těhle deklarací je sketch. Trochu se na to kouknout a optimalizovat.
 schools:pl.DataFrame = schools_source.select(filter_targets) # Schools je subtabulka sloužící k filtrování a jiným sussy operacím. Asi tady deklarována zbytečně vysoko.
@@ -94,13 +95,14 @@ schools = schools.filter([pl.col("Longitude").is_not_null(), pl.col("Latitude").
 
 # Vytvoření Markerů na mapě
 # Extrahování koordinací z dataframeu #TODO: Tohle je extrémně špatný přístup. Holy fuck.
-coords = zip(
-    schools.to_series(schools.get_column_index("Univerzita")).to_list(),
-    schools.to_series(schools.get_column_index("Latitude")).to_list(),
-    schools.to_series(schools.get_column_index("Longitude")).to_list(),
-    schools.to_series(schools.get_column_index("Stát")).to_list(),
-    schools.to_series(schools.get_column_index("URL")).to_list()
-)
+#coords = zip(*(schools.get_column(col_name).to_list() for col_name in display_targets))
+#coords = zip(
+#    schools.to_series(schools.get_column_index("Univerzita")).to_list(),
+#    schools.to_series(schools.get_column_index("Latitude")).to_list(),
+#    schools.to_series(schools.get_column_index("Longitude")).to_list(),
+#    schools.to_series(schools.get_column_index("Stát")).to_list(),
+#    schools.to_series(schools.get_column_index("URL")).to_list()
+#)
 
 # Iterace a zapsání do mapy
 for coord in coords:
