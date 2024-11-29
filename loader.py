@@ -41,7 +41,6 @@ def extract_dptmnts(new_schools:pl.DataFrame) -> pl.Series:
     new_schools = new_schools.filter(pl.col("Fullname") != "STORNO").with_columns(pl.col("Fullname").str.replace_all(" ", "").str.split(",").list.slice(offset=1).alias("Katedry")).drop("Fullname")
     log.info(new_schools.head())
     return new_schools.with_columns(pl.col("Katedry").map_elements(lambda lst: [f"K{elem}" if elem[0] != "K" and elem not in ["NANO", "PŘF", "PRF", "PRF MIMO KGEO"] else elem for elem in lst], return_dtype=pl.List(pl.String)).list.join(", ").name.keep())
-    comp_func = lambda lst: [elem if elem[0] != "K" and elem not in ["NANO", "PRF", "PRF MIMO KGEO"] else f"K{elem}" for elem in lst]
 
 # Funkce která předělává čísla oborů na jména
 def rename_subs(new_schools:pl.DataFrame) -> pl.DataFrame:
