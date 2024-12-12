@@ -3,7 +3,8 @@ import easygui
 import logging as log
 from geopy.geocoders import Nominatim
 import os.path
-from typing import Dict, List
+from typing import Dict, List, Tuple
+from io import StringIO
 
 # Nastavení logování NOTE: Log se ukládá do loader_log.txt
 log.basicConfig(
@@ -15,6 +16,29 @@ log.basicConfig(
     datefmt="%Y-%m-%d %H:%M",
     level=log.INFO
 )
+
+def fetch_csv(service:str = "",ticket:str = "", params_plus:dict = {}, auth:Tuple[str, str] = None) -> 'StringIO': # manual_login formát: (jméno, heslo)
+    import requests
+
+    assert service != "", "Service is necessary"
+    
+    url = "https://ws.ujep.cz/ws/services/rest2" + service
+
+    params = {
+        "outputFormat":"CSV",
+        "outputFormatEncoding":"utf-8"
+    }
+
+    params.update(params_plus)
+
+    cookies = {}
+    if ticket != "":
+        cookies.update({"WSCOOKIE":ticket})
+
+    data = requests.get(url, params=params, cookies=cookies, auth=auth)
+
+    wrap = StringIO(data.text)
+    return wrap
 
 # Funkce vracící slovník ve formátu {jméno v načítané tabulce:jméno v ukládané tabulce} 
 def getColumnTrans() -> Dict[str, str]:
@@ -34,13 +58,24 @@ def unite_cols(new_schools:pl.DataFrame, name_gen:pl.DataFrame) -> pl.DataFrame:
     return new_schools.drop("ciziSkolaNazev").rename(column_translator).join(name_gen, "ERASMUS CODE", "left").select(shady_stuff)
 
 # Funkce která získá katedry
-def extract_dptmnts(new_schools:pl.DataFrame) -> pl.Series:
+def extract_dptmnts(new_schools:pl.DataFrame) -> pl.DataFrame:
     #test = new_schools.get_column("Fullname").str.strip_chars().str.split(",").slice("").list.join(",")
     #log.info(test.to_list())
     #log.info(new_schools.get_column("Fullname").to_list())
+    dptmnts = pl.read_csv(fetch_csv(service="/ciselniky/getSeznamPracovist", params_plus={
+        "typPracoviste":"K",
+        "zkratka":"%",
+        "nadrazenePracoviste":"PRF"
+    })).filter(pl.col("nazev").str.contains("[Kk]atedra")).get_column("zkratka").to_list()
+
     new_schools = new_schools.filter(pl.col("Fullname") != "STORNO").with_columns(pl.col("Fullname").str.replace_all(" ", "").str.split(",").list.slice(offset=1).alias("Katedry")).drop("Fullname")
     log.info(new_schools.head())
-    return new_schools.with_columns(pl.col("Katedry").map_elements(lambda lst: [f"K{elem}" if elem[0] != "K" and elem not in ["NANO", "PŘF", "PRF", "PRF MIMO KGEO"] else elem for elem in lst], return_dtype=pl.List(pl.String)).list.join(", ").name.keep())
+
+    dpts = new_schools.explode("Katedry").lazy().group_by("ERASMUS CODE").agg(pl.col("Katedry")).collect()
+    new_schools = new_schools.unique("ERASMUS CODE").drop("Katedry").join(dpts, "ERASMUS CODE", "left").with_columns(pl.col("Katedry").list.join(", ").name.keep())
+
+    #return new_schools.with_columns(pl.col("Katedry").list.join(", ").name.keep())
+    return new_schools.with_columns(pl.when(pl.col("Katedry") == "všechny katedry").then(dptmnts).otherwise(pl.col("Katedry").name.keep()))
 
 # Funkce která předělává čísla oborů na jména
 def rename_subs(new_schools:pl.DataFrame) -> pl.DataFrame:
@@ -161,12 +196,12 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     # Sjednocení existujících sloupců
     new_schools = unite_cols(new_schools, addresses.select("ERASMUS CODE", "Univerzita"))
     log.info("Columns united.")
-    log.info(new_schools.head())
+    log.info(new_schools.filter((pl.col("ERASMUS CODE") == "BG ROUSSE01") | (pl.col("ERASMUS CODE") == "E JAEN01")).head())
 
     # Přidání kateder
     new_schools = extract_dptmnts(new_schools)
     log.info("Departments extracted.")
-    log.info(new_schools.head(15))
+    log.info(new_schools.filter((pl.col("ERASMUS CODE") == "BG ROUSSE01") | (pl.col("ERASMUS CODE") == "E JAEN01")).head(15))
 
     # Přejmenování oborů
     #rename_subs(new_schools=new_schools).write_excel("schools_legacy.xlsx")

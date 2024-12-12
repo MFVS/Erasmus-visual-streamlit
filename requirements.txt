@@ -5,3 +5,4 @@ streamlit_folium
 fastexcel
 easygui==0.98.3
 geopy
+xlsxwriter

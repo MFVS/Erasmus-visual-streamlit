@@ -9,7 +9,7 @@ from typing import Dict #, List
 
 schools_source = pl.read_excel("schools.xlsx")
 filter_targets = ["Katedry", "Univerzita", "Obory", "Stát"] # Mělo by reflektovat všechny potenciální filtrované sloupečky
-display_targets = ["Katedry", "Univerzita", "Obory", "Stát", "URL"]
+display_targets = ["Katedry", "Univerzita", "Obor", "Obory", "Stát", "URL"]
 
 #TODO: Obecně hodně těhle deklarací je sketch. Trochu se na to kouknout a optimalizovat.
 schools:pl.DataFrame = schools_source.select(filter_targets) # Schools je subtabulka sloužící k filtrování a jiným sussy operacím. Asi tady deklarována zbytečně vysoko.
@@ -47,7 +47,7 @@ for index, column in enumerate(filter_targets):
         st.session_state[column] = st.multiselect(label=column, options=picks[column]) # Samotné filtry, NOTE: This is kinda stupid?
 
 schools = filter_schools(schools_source)
-schools_sub = schools.select("Univerzita", "Obory","Stát","URL")
+schools_sub = schools.select(display_targets)
 
 
 
@@ -96,13 +96,13 @@ schools = schools.filter([pl.col("Longitude").is_not_null(), pl.col("Latitude").
 # Vytvoření Markerů na mapě
 # Extrahování koordinací z dataframeu #TODO: Tohle je extrémně špatný přístup. Holy fuck.
 #coords = zip(*(schools.get_column(col_name).to_list() for col_name in display_targets))
-#coords = zip(
-#    schools.to_series(schools.get_column_index("Univerzita")).to_list(),
-#    schools.to_series(schools.get_column_index("Latitude")).to_list(),
-#    schools.to_series(schools.get_column_index("Longitude")).to_list(),
-#    schools.to_series(schools.get_column_index("Stát")).to_list(),
-#    schools.to_series(schools.get_column_index("URL")).to_list()
-#)
+coords = zip(
+    schools.to_series(schools.get_column_index("Univerzita")).to_list(),
+    schools.to_series(schools.get_column_index("Latitude")).to_list(),
+    schools.to_series(schools.get_column_index("Longitude")).to_list(),
+    schools.to_series(schools.get_column_index("Stát")).to_list(),
+    schools.to_series(schools.get_column_index("URL")).to_list()
+)
 
 # Iterace a zapsání do mapy
 for coord in coords:

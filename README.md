@@ -23,7 +23,7 @@ Akutální web verze (NEREFLEKTUJE AKTUALIZACE): erasmus-proto.streamlit.app
       - Následek: Díry v lokacích; Upravit adresy dle openstreet nominatim api                - Matěj
         POSLEDNÍ DÍRA: University of Aegean
     - ~~sloučení názvů oborů ... zbavit se d.n. a j.n. atd.~~                                 [DONE]
-    - kód univerzity ... nebo smlouvy whatever, přidat jako sloupec                             [DONE?] ve schools.xlsx; ukázat i na stránce?                          
+    - kód univerzity ... nebo smlouvy whatever, přidat jako sloupec                           [DONE?] ve schools.xlsx; ukázat i na stránce?                          
     - ~~Pokud více fakult bude obsahovat stejnou školu, obory se budou vzájemně přepisovat. Fix that shit~~ [DONE]
 
 - **visualizer.py**
@@ -31,7 +31,7 @@ Akutální web verze (NEREFLEKTUJE AKTUALIZACE): erasmus-proto.streamlit.app
   - barvičky ... sjednotit / nápad výrazná barva pro 3 a více oborů, zbytek modro zelená
 
 - **loader.py**
-  - podmínka kód katedry =! STORNO ... zbavit se ukončených smluv
+  - ~~podmínka kód katedry =! STORNO ... zbavit se ukončených smluv~~           [DONE]
   - ~~url ... přidat před každý vygenerovaný odkaz "http://"~~                                [Mělo by to fungovat, ale moc v to důvěru nemám]
  
   
