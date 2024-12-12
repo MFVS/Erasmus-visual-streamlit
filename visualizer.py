@@ -8,8 +8,12 @@ from typing import Dict #, List
 #st.set_page_config(layout="wide")
 
 schools_source = pl.read_excel("schools.xlsx")
+<<<<<<< HEAD
 filter_targets = ["Katedry", "Univerzita", "Obory", "Stát"] # Mělo by reflektovat všechny potenciální filtrované sloupečky
 display_targets = ["Katedry", "Univerzita", "Obor", "Obory", "Stát", "URL"]
+=======
+filter_targets = ["Fakulta","Univerzita", "Obory", "Stát"] # Mělo by reflektovat všechny potenciální filtrované sloupečky
+>>>>>>> 13fdfc1e9f92123fc182a0a93193c6cc4559d8d9
 
 #TODO: Obecně hodně těhle deklarací je sketch. Trochu se na to kouknout a optimalizovat.
 schools:pl.DataFrame = schools_source.select(filter_targets) # Schools je subtabulka sloužící k filtrování a jiným sussy operacím. Asi tady deklarována zbytečně vysoko.
@@ -69,27 +73,30 @@ europe = fo.Map(
 )
 
 # Barvy pro jednotlivé katedry
-category_colors = {
-    "Turecká republika":"purple",
-    "Švédské království":"lightblue",
-    "Španělské království":"lightgreen",
-    "Srbská republika":"purple",
-    "Spolková republika Německo":"pink",
-    "Slovinská republika":"lightgreen",
-    "Slovenská republika":"pink",
-    "Řecká republika":"purple",
-    "Rumunsko":"purple",
-    "Portugalská republika":"lightgreen",
-    "Polská republika":"pink",
-    "Maďarsko":"pink",
-    "Lotyšská republika":"lightblue",
-    "Litevská republika":"lightblue",
-    "Italská republika":"lightgreen",
-    "Chorvatská republika":"lightgreen",
-    "Francouzská republika":"lightgreen",
-    "Estonská republika":"lightblue",
-    "Bulharská republika":"purple"
-}
+# category_colors = {
+#     "Turecká republika":"purple",
+#     "Švédské království":"lightblue",
+#     "Španělské království":"lightgreen",
+#     "Srbská republika":"purple",
+#     "Spolková republika Německo":"pink",
+#     "Slovinská republika":"lightgreen",
+#     "Slovenská republika":"pink",
+#     "Řecká republika":"purple",
+#     "Rumunsko":"purple",
+#     "Portugalská republika":"lightgreen",
+#     "Polská republika":"pink",
+#     "Maďarsko":"pink",
+#     "Lotyšská republika":"lightblue",
+#     "Litevská republika":"lightblue",
+#     "Italská republika":"lightgreen",
+#     "Chorvatská republika":"lightgreen",
+#     "Francouzská republika":"lightgreen",
+#     "Estonská republika":"lightblue",
+#     "Bulharská republika":"purple"
+# }
+# command k command c .... command k command u
+
+category_colors = {"PřF": "pink"}
 
 schools = schools.filter([pl.col("Longitude").is_not_null(), pl.col("Latitude").is_not_null()])
 
@@ -97,6 +104,7 @@ schools = schools.filter([pl.col("Longitude").is_not_null(), pl.col("Latitude").
 # Extrahování koordinací z dataframeu #TODO: Tohle je extrémně špatný přístup. Holy fuck.
 #coords = zip(*(schools.get_column(col_name).to_list() for col_name in display_targets))
 coords = zip(
+    schools.to_series(schools.get_column_index("Fakulta")).to_list(),
     schools.to_series(schools.get_column_index("Univerzita")).to_list(),
     schools.to_series(schools.get_column_index("Latitude")).to_list(),
     schools.to_series(schools.get_column_index("Longitude")).to_list(),
@@ -106,14 +114,14 @@ coords = zip(
 
 # Iterace a zapsání do mapy
 for coord in coords:
-    stát = coord[3]
-    color = category_colors.get(stát, "blue")
+    fakulta = coord[0]
+    color = category_colors.get(fakulta, "blue")
     
     # Vytvoření popisu s názvem univerzity a URL
     popup_content = f"<strong>{coord[0]}</strong><br><a href='{coord[4]}' target='_blank'>{coord[4]}</a>"
     
     fo.Marker(
-        location=[coord[1], coord[2]],
+        location=[coord[2], coord[3]],
         popup=fo.Popup(popup_content),
         icon=fo.Icon(color=color, icon="graduation-cap", prefix="fa")
     ).add_to(europe)

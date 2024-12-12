@@ -85,7 +85,6 @@ def rename_subs(new_schools:pl.DataFrame) -> pl.DataFrame:
        pl.col("Název").str.replace_all(r"(?i)– obory [dj]\. n\.", "").str.strip_chars_end().alias("Based") # Hranatá závorka je regulérní výraz: V podstatě to znamená "Pokud najdeš jedno písmeno z množiny"    
     ).drop("Název").rename({"Based":"Název"}) 
 
-
     # Rozepiš obory
     new_schools = new_schools.with_columns(pl.col("Obor").str.split(", ").alias("Obor2")).drop("Obor").rename({"Obor2":"Obor"})
     new_schools_temp = new_schools.explode("Obor").join(code_trans, "Obor", how="left").rename({"Název":"Obory"}).unique()
@@ -178,6 +177,7 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     if not os.path.exists("schools.xlsx"):
         current_schools = pl.from_dict({
             "ERASMUS CODE":pl.Series(dtype=pl.String),
+            "Fakulta":pl.Series(dtype=pl.String),
             "Katedry":pl.Series(dtype=pl.String),
             "Univerzita":pl.Series(dtype=pl.String),
             "Město":pl.Series(dtype=pl.String),
@@ -222,7 +222,7 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
 
     # Mergování a zápis
     #current_schools = current_schools.drop("Longitude", "Latitude")
-
+    new_schools = new_schools.insert_column(1, pl.Series("Fakulta",["PřF"] * new_schools.__len__(),dtype=pl.String))
     new_schools = new_schools.select(current_schools.columns)
     current_schools.join(new_schools, "ERASMUS CODE", "anti").vstack(new_schools, in_place=True).write_excel("schools.xlsx")
     log.info("Done!")
