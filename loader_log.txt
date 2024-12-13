@@ -1,173 +1,96 @@
-<<<<<<< HEAD
-2024-12-06 13:45 - INFO - Tables read successfully.
-2024-12-06 13:45 - INFO - Columns united.
-2024-12-06 13:45 - INFO - shape: (2, 6)
-┌─────────────────────────────────┬──────────────┬────────┬─────────────────────┬──────┬──────────────────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město  ┆ Stát                ┆ Obor ┆ Fullname             │
-│ ---                             ┆ ---          ┆ ---    ┆ ---                 ┆ ---  ┆ ---                  │
-│ str                             ┆ str          ┆ str    ┆ str                 ┆ str  ┆ str                  │
-╞═════════════════════════════════╪══════════════╪════════╪═════════════════════╪══════╪══════════════════════╡
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ 061  ┆ BG ROUSSE01, KI, KMA │
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ 0610 ┆ BG ROUSSE01, NANO    │
-└─────────────────────────────────┴──────────────┴────────┴─────────────────────┴──────┴──────────────────────┘
-2024-12-06 13:45 - INFO - shape: (5, 6)
-=======
-2024-12-06 13:39 - INFO - Tables read successfully.
-2024-12-06 13:39 - INFO - Columns united.
-2024-12-06 13:39 - INFO - shape: (5, 6)
-┌─────────────────────────────────┬──────────────┬──────────┬────────────────────────────┬──────────┬────────────────────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město    ┆ Stát                       ┆ Obor     ┆ Fullname               │
-│ ---                             ┆ ---          ┆ ---      ┆ ---                        ┆ ---      ┆ ---                    │
-│ str                             ┆ str          ┆ str      ┆ str                        ┆ str      ┆ str                    │
-╞═════════════════════════════════╪══════════════╪══════════╪════════════════════════════╪══════════╪════════════════════════╡
-│ AKDENIZ UNIVERSITY              ┆ TR ANTALYA01 ┆ Antalya  ┆ Turecká republika          ┆ 051      ┆ TR ANTALYA01, KBI      │
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse   ┆ Bulharská republika        ┆ 061      ┆ BG ROUSSE01, KI, KMA   │
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse   ┆ Bulharská republika        ┆ 0610     ┆ BG ROUSSE01, NANO      │
-│ TECHNISCHE UNIVERSITAT DORTMUN… ┆ D  DORTMUN01 ┆ Dortmund ┆ Spolková republika Německo ┆ 0510     ┆ D  DORTMUN01, PRF      │
-│ TECHNISCHE UNIVERSITAET DRESDE… ┆ D  DRESDEN02 ┆ Dresden  ┆ Spolková republika Německo ┆ 051, 054 ┆ D  DRESDEN02, KBI,KGEO │
-└─────────────────────────────────┴──────────────┴──────────┴────────────────────────────┴──────────┴────────────────────────┘
-2024-12-06 13:39 - INFO - shape: (5, 6)
->>>>>>> 13fdfc1e9f92123fc182a0a93193c6cc4559d8d9
-┌─────────────────────────────────┬──────────────┬──────────┬────────────────────────────┬──────────┬─────────────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město    ┆ Stát                       ┆ Obor     ┆ Katedry         │
-│ ---                             ┆ ---          ┆ ---      ┆ ---                        ┆ ---      ┆ ---             │
-│ str                             ┆ str          ┆ str      ┆ str                        ┆ str      ┆ list[str]       │
-╞═════════════════════════════════╪══════════════╪══════════╪════════════════════════════╪══════════╪═════════════════╡
-│ AKDENIZ UNIVERSITY              ┆ TR ANTALYA01 ┆ Antalya  ┆ Turecká republika          ┆ 051      ┆ ["KBI"]         │
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse   ┆ Bulharská republika        ┆ 061      ┆ ["KI", "KMA"]   │
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse   ┆ Bulharská republika        ┆ 0610     ┆ ["NANO"]        │
-│ TECHNISCHE UNIVERSITAT DORTMUN… ┆ D  DORTMUN01 ┆ Dortmund ┆ Spolková republika Německo ┆ 0510     ┆ ["PRF"]         │
-│ TECHNISCHE UNIVERSITAET DRESDE… ┆ D  DRESDEN02 ┆ Dresden  ┆ Spolková republika Německo ┆ 051, 054 ┆ ["KBI", "KGEO"] │
-└─────────────────────────────────┴──────────────┴──────────┴────────────────────────────┴──────────┴─────────────────┘
-<<<<<<< HEAD
-2024-12-06 13:45 - INFO - Departments extracted.
-2024-12-06 13:45 - INFO - shape: (1, 6)
-┌─────────────────────────────────┬──────────────┬────────┬─────────────────────┬──────┬───────────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město  ┆ Stát                ┆ Obor ┆ Katedry       │
-│ ---                             ┆ ---          ┆ ---    ┆ ---                 ┆ ---  ┆ ---           │
-│ str                             ┆ str          ┆ str    ┆ str                 ┆ str  ┆ str           │
-╞═════════════════════════════════╪══════════════╪════════╪═════════════════════╪══════╪═══════════════╡
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ 061  ┆ KI, KMA, NANO │
-└─────────────────────────────────┴──────────────┴────────┴─────────────────────┴──────┴───────────────┘
-2024-12-06 13:45 - INFO - Renamed cols.
-2024-12-06 13:45 - INFO - shape: (2, 7)
-┌─────────────────────────────┬──────────────┬────────┬─────────────────────┬───────────────┬───────────┬────────────────────────────┐
-│ Univerzita                  ┆ ERASMUS CODE ┆ Město  ┆ Stát                ┆ Katedry       ┆ Obor      ┆ Obory                      │
-│ ---                         ┆ ---          ┆ ---    ┆ ---                 ┆ ---           ┆ ---       ┆ ---                        │
-│ str                         ┆ str          ┆ str    ┆ str                 ┆ str           ┆ str       ┆ str                        │
-╞═════════════════════════════╪══════════════╪════════╪═════════════════════╪═══════════════╪═══════════╪════════════════════════════╡
-│ UNIVERSITY OF RUSE ANGEL    ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ KI, KMA, NANO ┆ 061, 0610 ┆ Informační a komunikační   │
-│ KANCH…                      ┆              ┆        ┆                     ┆               ┆           ┆ techn…                     │
-│ UNIVERSITY OF RUSE ANGEL    ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ KI, KMA, NANO ┆ 061, 0610 ┆ Informační a komunikační   │
-│ KANCH…                      ┆              ┆        ┆                     ┆               ┆           ┆ techn…                     │
-└─────────────────────────────┴──────────────┴────────┴─────────────────────┴───────────────┴───────────┴────────────────────────────┘
-2024-12-06 13:45 - INFO - Fetched url.
-2024-12-06 13:45 - INFO - shape: (5, 8)
-┌────────────────────┬──────────────┬──────────┬────────────────────┬───────────┬────────────────┬───────────────┬───────────────────┐
-│ Univerzita         ┆ ERASMUS CODE ┆ Město    ┆ Stát               ┆ Katedry   ┆ Obor           ┆ Obory         ┆ URL               │
-│ ---                ┆ ---          ┆ ---      ┆ ---                ┆ ---       ┆ ---            ┆ ---           ┆ ---               │
-│ str                ┆ str          ┆ str      ┆ str                ┆ str       ┆ str            ┆ str           ┆ str               │
-╞════════════════════╪══════════════╪══════════╪════════════════════╪═══════════╪════════════════╪═══════════════╪═══════════════════╡
-│ POLITECHNIKA       ┆ PL LODZ02    ┆ Lodz     ┆ Polská republika   ┆ KI        ┆ 0510           ┆ Biologické a  ┆ https://www.p.lod │
-│ LODZKA             ┆              ┆          ┆                    ┆           ┆                ┆ příbuzné vědy ┆ z.pl              │
-│ ECOLE D'INGENIEURS ┆ F  TOULOUS15 ┆ Toulouse ┆ Francouzská        ┆ KBI, KGEO ┆ 0532           ┆ Vědy o Zemi   ┆ https://www.purpa │
-│ DE PURPAN          ┆              ┆          ┆ republika          ┆           ┆                ┆               ┆ n.fr              │
-│ UNIVERZA NA        ┆ SI KOPER03   ┆ Koper    ┆ Slovinská          ┆ KBI, KI   ┆ 0532, 061, 051 ┆ Vědy o Zemi   ┆ https://www.upr.s │
-│ PRIMORSKEM         ┆              ┆          ┆ republika          ┆           ┆                ┆               ┆ i                 │
-│ UNIVERS…           ┆              ┆          ┆                    ┆           ┆                ┆               ┆                   │
-│ UNIVERZA NA        ┆ SI KOPER03   ┆ Koper    ┆ Slovinská          ┆ KBI, KI   ┆ 0532, 061, 051 ┆ Informační a  ┆ https://www.upr.s │
-│ PRIMORSKEM         ┆              ┆          ┆ republika          ┆           ┆                ┆ komunikační   ┆ i                 │
-│ UNIVERS…           ┆              ┆          ┆                    ┆           ┆                ┆ techn…        ┆                   │
-│ UNIVERZA NA        ┆ SI KOPER03   ┆ Koper    ┆ Slovinská          ┆ KBI, KI   ┆ 0532, 061, 051 ┆ Biologické a  ┆ https://www.upr.s │
-│ PRIMORSKEM         ┆              ┆          ┆ republika          ┆           ┆                ┆ příbuzné vědy ┆ i                 │
-│ UNIVERS…           ┆              ┆          ┆                    ┆           ┆                ┆               ┆                   │
-└────────────────────┴──────────────┴──────────┴────────────────────┴───────────┴────────────────┴───────────────┴───────────────────┘
-2024-12-06 13:45 - INFO - Fetched geocoords.
-2024-12-06 13:45 - INFO - shape: (5, 10)
-┌───────────────────┬──────────────┬──────────┬─────────────┬───┬───────────────┬───────────────────┬───────────────────┬────────────┐
-│ Univerzita        ┆ ERASMUS CODE ┆ Město    ┆ Stát        ┆ … ┆ Obory         ┆ URL               ┆ Longitude         ┆ Latitude   │
-│ ---               ┆ ---          ┆ ---      ┆ ---         ┆   ┆ ---           ┆ ---               ┆ ---               ┆ ---        │
-│ str               ┆ str          ┆ str      ┆ str         ┆   ┆ str           ┆ str               ┆ str               ┆ str        │
-╞═══════════════════╪══════════════╪══════════╪═════════════╪═══╪═══════════════╪═══════════════════╪═══════════════════╪════════════╡
-│ POLITECHNIKA      ┆ PL LODZ02    ┆ Lodz     ┆ Polská      ┆ … ┆ Biologické a  ┆ https://www.p.lod ┆ 19.4529575        ┆ 51.752577  │
-│ LODZKA            ┆              ┆          ┆ republika   ┆   ┆ příbuzné vědy ┆ z.pl              ┆                   ┆            │
-│ ECOLE             ┆ F  TOULOUS15 ┆ Toulouse ┆ Francouzská ┆ … ┆ Vědy o Zemi   ┆ https://www.purpa ┆ 1.396515522810259 ┆ 43.6024928 │
-│ D'INGENIEURS DE   ┆              ┆          ┆ republika   ┆   ┆               ┆ n.fr              ┆ 5                 ┆            │
-│ PURPAN            ┆              ┆          ┆             ┆   ┆               ┆                   ┆                   ┆            │
-│ UNIVERZA NA       ┆ SI KOPER03   ┆ Koper    ┆ Slovinská   ┆ … ┆ Vědy o Zemi   ┆ https://www.upr.s ┆ 13.7268097        ┆ 45.5480962 │
-│ PRIMORSKEM        ┆              ┆          ┆ republika   ┆   ┆               ┆ i                 ┆                   ┆            │
-│ UNIVERS…          ┆              ┆          ┆             ┆   ┆               ┆                   ┆                   ┆            │
-│ UNIVERZA NA       ┆ SI KOPER03   ┆ Koper    ┆ Slovinská   ┆ … ┆ Informační a  ┆ https://www.upr.s ┆ 13.7268097        ┆ 45.5480962 │
-│ PRIMORSKEM        ┆              ┆          ┆ republika   ┆   ┆ komunikační   ┆ i                 ┆                   ┆            │
-│ UNIVERS…          ┆              ┆          ┆             ┆   ┆ techn…        ┆                   ┆                   ┆            │
-│ UNIVERZA NA       ┆ SI KOPER03   ┆ Koper    ┆ Slovinská   ┆ … ┆ Biologické a  ┆ https://www.upr.s ┆ 13.7268097        ┆ 45.5480962 │
-│ PRIMORSKEM        ┆              ┆          ┆ republika   ┆   ┆ příbuzné vědy ┆ i                 ┆                   ┆            │
-│ UNIVERS…          ┆              ┆          ┆             ┆   ┆               ┆                   ┆                   ┆            │
-└───────────────────┴──────────────┴──────────┴─────────────┴───┴───────────────┴───────────────────┴───────────────────┴────────────┘
-2024-12-06 13:45 - INFO - ['Univerzita', 'ERASMUS CODE', 'Město', 'Stát', 'Katedry', 'Obor', 'Obory', 'URL', 'Longitude', 'Latitude']
-2024-12-06 13:45 - INFO - Done!
-=======
-2024-12-06 13:39 - INFO - Departments extracted.
-2024-12-06 13:39 - INFO - shape: (15, 6)
-┌─────────────────────────────────┬──────────────┬──────────┬────────────────────────────┬───────────────────────────┬───────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město    ┆ Stát                       ┆ Obor                      ┆ Katedry   │
-│ ---                             ┆ ---          ┆ ---      ┆ ---                        ┆ ---                       ┆ ---       │
-│ str                             ┆ str          ┆ str      ┆ str                        ┆ str                       ┆ str       │
-╞═════════════════════════════════╪══════════════╪══════════╪════════════════════════════╪═══════════════════════════╪═══════════╡
-│ AKDENIZ UNIVERSITY              ┆ TR ANTALYA01 ┆ Antalya  ┆ Turecká republika          ┆ 051                       ┆ KBI       │
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse   ┆ Bulharská republika        ┆ 061                       ┆ KI, KMA   │
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse   ┆ Bulharská republika        ┆ 0610                      ┆ NANO      │
-│ TECHNISCHE UNIVERSITAT DORTMUN… ┆ D  DORTMUN01 ┆ Dortmund ┆ Spolková republika Německo ┆ 0510                      ┆ PRF       │
-│ TECHNISCHE UNIVERSITAET DRESDE… ┆ D  DRESDEN02 ┆ Dresden  ┆ Spolková republika Německo ┆ 051, 054                  ┆ KBI, KGEO │
-│ …                               ┆ …            ┆ …        ┆ …                          ┆ …                         ┆ …         │
-│ JUSTUS-LIEBIG-UNIVERSITAET GIE… ┆ D  GIESSEN01 ┆ Giessen  ┆ Spolková republika Německo ┆ 051, 0532                 ┆ KGEO      │
-│ UNIVERSIDAD DE JAEN             ┆ E  JAEN01    ┆ Jaén     ┆ Španělské království       ┆ 05, 061                   ┆ KBI       │
-│ UNIVERSIDAD DE JAEN             ┆ E  JAEN01    ┆ Jaén     ┆ Španělské království       ┆ 051, 0532, 0533, 054, 061 ┆ KGEO      │
-│ UNIVERSIDAD AUTONOMA DE MADRID  ┆ E  MADRID04  ┆ Madrid   ┆ Španělské království       ┆ 0532                      ┆ KBI       │
-│ UNIVERSIDAD DE MALAGA           ┆ E  MALAGA01  ┆ Malaga   ┆ Španělské království       ┆ 054                       ┆ KGEO      │
-└─────────────────────────────────┴──────────────┴──────────┴────────────────────────────┴───────────────────────────┴───────────┘
-2024-12-06 13:39 - INFO - Renamed cols.
-2024-12-06 13:39 - INFO - shape: (2, 7)
-┌─────────────────────────────────┬──────────────┬────────┬─────────────────────┬─────────┬───────────┬─────────────────────────────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město  ┆ Stát                ┆ Katedry ┆ Obor      ┆ Obory                           │
-│ ---                             ┆ ---          ┆ ---    ┆ ---                 ┆ ---     ┆ ---       ┆ ---                             │
-│ str                             ┆ str          ┆ str    ┆ str                 ┆ str     ┆ str       ┆ str                             │
-╞═════════════════════════════════╪══════════════╪════════╪═════════════════════╪═════════╪═══════════╪═════════════════════════════════╡
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ KI, KMA ┆ 061, 0610 ┆ Informační a komunikační techn… │
-│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ KI, KMA ┆ 061, 0610 ┆ Informační a komunikační techn… │
-└─────────────────────────────────┴──────────────┴────────┴─────────────────────┴─────────┴───────────┴─────────────────────────────────┘
-2024-12-06 13:39 - INFO - Fetched url.
-2024-12-06 13:39 - INFO - shape: (5, 8)
-┌─────────────────────────────────┬──────────────┬──────────┬────────────────────────────┬────────────────┬────────────────┬────────────────────────────┬─────────────────────────────┐
-│ Univerzita                      ┆ ERASMUS CODE ┆ Město    ┆ Stát                       ┆ Katedry        ┆ Obor           ┆ Obory                      ┆ URL                         │
-│ ---                             ┆ ---          ┆ ---      ┆ ---                        ┆ ---            ┆ ---            ┆ ---                        ┆ ---                         │
-│ str                             ┆ str          ┆ str      ┆ str                        ┆ str            ┆ str            ┆ str                        ┆ str                         │
-╞═════════════════════════════════╪══════════════╪══════════╪════════════════════════════╪════════════════╪════════════════╪════════════════════════════╪═════════════════════════════╡
-│ UNIWERSYTET GDANSKI             ┆ PL GDANSK01  ┆ Gdansk   ┆ Polská republika           ┆ KCH            ┆ 051            ┆ Biologické a příbuzné vědy ┆ https://www.ug.edu.pl       │
-│ UNIVERSITA DEGLI STUDI DI TRIE… ┆ I  TRIESTE01 ┆ Trieste  ┆ Italská republika          ┆ KFY            ┆ 0540, 0610     ┆ Matematika a statistika    ┆ https://www.units.it        │
-│ UNIVERSITA DEGLI STUDI DI TRIE… ┆ I  TRIESTE01 ┆ Trieste  ┆ Italská republika          ┆ KFY            ┆ 0540, 0610     ┆ Informační a komunikační   ┆ https://www.units.it        │
-│                                 ┆              ┆          ┆                            ┆                ┆                ┆ techn…                     ┆                             │
-│ LATVIJAS BIOZINATNU UN TEHNOLO… ┆ LV JELGAVA01 ┆ Jelgava  ┆ Lotyšská republika         ┆ KGEO           ┆ 0731           ┆ Architektura a urbanismus  ┆ https://www.lbtu.lv         │
-│ JULIUS-MAXIMILIANS-UNIVERSITAT… ┆ D  WURZBUR01 ┆ Würzburg ┆ Spolková republika Německo ┆ KFY, KGEO, KMA ┆ 061, 051, 0531 ┆ Informační a komunikační   ┆ http://www.uni-wuerzburg.de │
-│                                 ┆              ┆          ┆                            ┆                ┆                ┆ techn…                     ┆                             │
-└─────────────────────────────────┴──────────────┴──────────┴────────────────────────────┴────────────────┴────────────────┴────────────────────────────┴─────────────────────────────┘
-2024-12-06 13:40 - INFO - Fetched geocoords.
-2024-12-06 13:40 - INFO - shape: (5, 10)
-┌──────────────────────────────┬──────────────┬──────────┬────────────────────┬───┬──────────────────────────────┬─────────────────────────────┬────────────────────┬────────────────────┐
-│ Univerzita                   ┆ ERASMUS CODE ┆ Město    ┆ Stát               ┆ … ┆ Obory                        ┆ URL                         ┆ Longitude          ┆ Latitude           │
-│ ---                          ┆ ---          ┆ ---      ┆ ---                ┆   ┆ ---                          ┆ ---                         ┆ ---                ┆ ---                │
-│ str                          ┆ str          ┆ str      ┆ str                ┆   ┆ str                          ┆ str                         ┆ str                ┆ str                │
-╞══════════════════════════════╪══════════════╪══════════╪════════════════════╪═══╪══════════════════════════════╪═════════════════════════════╪════════════════════╪════════════════════╡
-│ UNIWERSYTET GDANSKI          ┆ PL GDANSK01  ┆ Gdansk   ┆ Polská republika   ┆ … ┆ Biologické a příbuzné vědy   ┆ https://www.ug.edu.pl       ┆ 18.57400997579134  ┆ 54.396404950000004 │
-│ UNIVERSITA DEGLI STUDI DI    ┆ I  TRIESTE01 ┆ Trieste  ┆ Italská republika  ┆ … ┆ Matematika a statistika      ┆ https://www.units.it        ┆ 13.794792540211322 ┆ 45.6601694         │
-│ TRIE…                        ┆              ┆          ┆                    ┆   ┆                              ┆                             ┆                    ┆                    │
-│ UNIVERSITA DEGLI STUDI DI    ┆ I  TRIESTE01 ┆ Trieste  ┆ Italská republika  ┆ … ┆ Informační a komunikační     ┆ https://www.units.it        ┆ 13.794792540211322 ┆ 45.6601694         │
-│ TRIE…                        ┆              ┆          ┆                    ┆   ┆ techn…                       ┆                             ┆                    ┆                    │
-│ LATVIJAS BIOZINATNU UN       ┆ LV JELGAVA01 ┆ Jelgava  ┆ Lotyšská republika ┆ … ┆ Architektura a urbanismus    ┆ https://www.lbtu.lv         ┆ 23.7323561         ┆ 56.655968          │
-│ TEHNOLO…                     ┆              ┆          ┆                    ┆   ┆                              ┆                             ┆                    ┆                    │
-│ JULIUS-MAXIMILIANS-UNIVERSIT ┆ D  WURZBUR01 ┆ Würzburg ┆ Spolková republika ┆ … ┆ Informační a komunikační     ┆ http://www.uni-wuerzburg.de ┆ 9.971655766351642  ┆ 49.780603150000005 │
-│ AT…                          ┆              ┆          ┆ Německo            ┆   ┆ techn…                       ┆                             ┆                    ┆                    │
-└──────────────────────────────┴──────────────┴──────────┴────────────────────┴───┴──────────────────────────────┴─────────────────────────────┴────────────────────┴────────────────────┘
-2024-12-06 13:40 - INFO - ['Univerzita', 'ERASMUS CODE', 'Město', 'Stát', 'Katedry', 'Obor', 'Obory', 'URL', 'Longitude', 'Latitude']
-2024-12-06 13:40 - INFO - Done!
->>>>>>> 13fdfc1e9f92123fc182a0a93193c6cc4559d8d9
+2024-12-13 00:40 - INFO - Tables read successfully.
+2024-12-13 00:40 - INFO - Columns united.
+2024-12-13 00:40 - INFO - shape: (2, 6)
+┌─────────────────────────────────┬──────────────┬────────┬─────────────────────┬────────────┬──────────────────────┐
+│ Univerzita                      ┆ ERASMUS CODE ┆ Město  ┆ Stát                ┆ Obor       ┆ Fullname             │
+│ ---                             ┆ ---          ┆ ---    ┆ ---                 ┆ ---        ┆ ---                  │
+│ str                             ┆ str          ┆ str    ┆ str                 ┆ str        ┆ str                  │
+╞═════════════════════════════════╪══════════════╪════════╪═════════════════════╪════════════╪══════════════════════╡
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ 0533       ┆ BG ROUSSE01, KFY     │
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ 0540, 0610 ┆ BG ROUSSE01, KI, KMA │
+└─────────────────────────────────┴──────────────┴────────┴─────────────────────┴────────────┴──────────────────────┘
+2024-12-13 00:40 - INFO - shape: (5, 17)
+┌───────┬─────────────────┬─────────┬─────────────────────────────────┬───┬──────────────────┬─────────────────┬──────────────┬─────────────────┐
+│ level ┆ cisloPracoviste ┆ zkratka ┆ nazev                           ┆ … ┆ typVedoucihoTxt  ┆ vedouciUcitIdno ┆ vedouciJmeno ┆ vedouciPrijmeni │
+│ ---   ┆ ---             ┆ ---     ┆ ---                             ┆   ┆ ---              ┆ ---             ┆ ---          ┆ ---             │
+│ i64   ┆ i64             ┆ str     ┆ str                             ┆   ┆ str              ┆ i64             ┆ str          ┆ str             │
+╞═══════╪═════════════════╪═════════╪═════════════════════════════════╪═══╪══════════════════╪═════════════════╪══════════════╪═════════════════╡
+│ 0     ┆ 53227           ┆ CNB     ┆ Centrum nanomateriálů a biotec… ┆ … ┆ vedoucí oddělení ┆ 280             ┆ Jan          ┆ Malý            │
+│ 0     ┆ 53520           ┆ CPPV    ┆ Centrum pro podporu přírodověd… ┆ … ┆ vedoucí oddělení ┆ 8441            ┆ Kateřina     ┆ Jančaříková     │
+│ 0     ┆ 53221           ┆ KBI     ┆ Katedra biologie                ┆ … ┆ vedoucí katedry  ┆ 5471            ┆ Hana         ┆ Auer Malinská   │
+│ 0     ┆ 53222           ┆ KFY     ┆ Katedra fyziky                  ┆ … ┆ vedoucí katedry  ┆ 301             ┆ Eva          ┆ Hejnová         │
+│ 0     ┆ 53225           ┆ KGEO    ┆ Katedra geografie               ┆ … ┆ vedoucí katedry  ┆ 4222            ┆ Vladan       ┆ Hruška          │
+└───────┴─────────────────┴─────────┴─────────────────────────────────┴───┴──────────────────┴─────────────────┴──────────────┴─────────────────┘
+2024-12-13 00:40 - INFO - shape: (5, 6)
+┌─────────────────────────────────┬──────────────┬────────────────┬────────────────────────────┬────────────┬─────────────────┐
+│ Univerzita                      ┆ ERASMUS CODE ┆ Město          ┆ Stát                       ┆ Obor       ┆ Katedry         │
+│ ---                             ┆ ---          ┆ ---            ┆ ---                        ┆ ---        ┆ ---             │
+│ str                             ┆ str          ┆ str            ┆ str                        ┆ str        ┆ list[str]       │
+╞═════════════════════════════════╪══════════════╪════════════════╪════════════════════════════╪════════════╪═════════════════╡
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse         ┆ Bulharská republika        ┆ 0533       ┆ ["KFY"]         │
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse         ┆ Bulharská republika        ┆ 0540, 0610 ┆ ["KI", "KMA"]   │
+│ TECHNISCHE UNIVERSITAT DORTMUN… ┆ D  DORTMUN01 ┆ Dortmund       ┆ Spolková republika Německo ┆ 0731       ┆ ["KGEO"]        │
+│ TECHNISCHE UNIVERSITAET DRESDE… ┆ D  DRESDEN02 ┆ Dresden        ┆ Spolková republika Německo ┆ 0511, 0532 ┆ ["KBI", "KGEO"] │
+│ RHEINLAND-PFALZISCHE TECHNISCH… ┆ D  KAISERS01 ┆ Kaiserslautern ┆ Spolková republika Německo ┆ 0533       ┆ ["KFY"]         │
+└─────────────────────────────────┴──────────────┴────────────────┴────────────────────────────┴────────────┴─────────────────┘
+2024-12-13 00:40 - INFO - Departments extracted.
+2024-12-13 00:40 - INFO - shape: (1, 6)
+┌─────────────────────────────────┬──────────────┬────────┬─────────────────────┬──────┬──────────────┐
+│ Univerzita                      ┆ ERASMUS CODE ┆ Město  ┆ Stát                ┆ Obor ┆ Katedry      │
+│ ---                             ┆ ---          ┆ ---    ┆ ---                 ┆ ---  ┆ ---          │
+│ str                             ┆ str          ┆ str    ┆ str                 ┆ str  ┆ str          │
+╞═════════════════════════════════╪══════════════╪════════╪═════════════════════╪══════╪══════════════╡
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ 0533 ┆ KFY, KI, KMA │
+└─────────────────────────────────┴──────────────┴────────┴─────────────────────┴──────┴──────────────┘
+2024-12-13 00:40 - INFO - Renamed cols.
+2024-12-13 00:40 - INFO - shape: (1, 7)
+┌─────────────────────────────────┬──────────────┬────────┬─────────────────────┬──────────────┬──────┬────────┐
+│ Univerzita                      ┆ ERASMUS CODE ┆ Město  ┆ Stát                ┆ Katedry      ┆ Obor ┆ Obory  │
+│ ---                             ┆ ---          ┆ ---    ┆ ---                 ┆ ---          ┆ ---  ┆ ---    │
+│ str                             ┆ str          ┆ str    ┆ str                 ┆ str          ┆ str  ┆ str    │
+╞═════════════════════════════════╪══════════════╪════════╪═════════════════════╪══════════════╪══════╪════════╡
+│ UNIVERSITY OF RUSE ANGEL KANCH… ┆ BG ROUSSE01  ┆ Rousse ┆ Bulharská republika ┆ KFY, KI, KMA ┆ 0533 ┆ Fyzika │
+└─────────────────────────────────┴──────────────┴────────┴─────────────────────┴──────────────┴──────┴────────┘
+2024-12-13 00:40 - INFO - Fetched url.
+2024-12-13 00:40 - INFO - shape: (5, 8)
+┌─────────────────────┬──────────────┬────────────────┬────────────────────┬───────────────┬────────────────┬───────────────┬────────────────────┐
+│ Univerzita          ┆ ERASMUS CODE ┆ Město          ┆ Stát               ┆ Katedry       ┆ Obor           ┆ Obory         ┆ URL                │
+│ ---                 ┆ ---          ┆ ---            ┆ ---                ┆ ---           ┆ ---            ┆ ---           ┆ ---                │
+│ str                 ┆ str          ┆ str            ┆ str                ┆ str           ┆ str            ┆ str           ┆ str                │
+╞═════════════════════╪══════════════╪════════════════╪════════════════════╪═══════════════╪════════════════╪═══════════════╪════════════════════╡
+│ SVEUCILISTE ALGEBRA ┆ HR ZAGREB11  ┆ ZAGREB         ┆ Chorvatská         ┆ KI            ┆ 0610           ┆ Informační a  ┆ https://www.algebr │
+│                     ┆              ┆                ┆ republika          ┆               ┆                ┆ komunikační   ┆ a.hr               │
+│                     ┆              ┆                ┆                    ┆               ┆                ┆ techn…        ┆                    │
+│ RHEINLAND-PFALZISCH ┆ D  KAISERS01 ┆ Kaiserslautern ┆ Spolková republika ┆ KFY           ┆ 0533           ┆ Fyzika        ┆ https://rptu.de/   │
+│ E TECHNISCH…        ┆              ┆                ┆ Německo            ┆               ┆                ┆               ┆                    │
+│ UNIVERSITATEA DE    ┆ RO TIMISOA01 ┆ Timisoara      ┆ Rumunsko           ┆ KBI, KGEO, KI ┆ 051, 0532, 061 ┆ Biologické a  ┆ https://www.uvt.ro │
+│ VEST DIN TIMI…      ┆              ┆                ┆                    ┆               ┆                ┆ příbuzné vědy ┆                    │
+│ UNIVERSITATEA DE    ┆ RO TIMISOA01 ┆ Timisoara      ┆ Rumunsko           ┆ KBI, KGEO, KI ┆ 051, 0532, 061 ┆ Vědy o Zemi   ┆ https://www.uvt.ro │
+│ VEST DIN TIMI…      ┆              ┆                ┆                    ┆               ┆                ┆               ┆                    │
+│ UNIVERSITATEA DE    ┆ RO TIMISOA01 ┆ Timisoara      ┆ Rumunsko           ┆ KBI, KGEO, KI ┆ 051, 0532, 061 ┆ Informační a  ┆ https://www.uvt.ro │
+│ VEST DIN TIMI…      ┆              ┆                ┆                    ┆               ┆                ┆ komunikační   ┆                    │
+│                     ┆              ┆                ┆                    ┆               ┆                ┆ techn…        ┆                    │
+└─────────────────────┴──────────────┴────────────────┴────────────────────┴───────────────┴────────────────┴───────────────┴────────────────────┘
+2024-12-13 00:41 - INFO - Fetched geocoords.
+2024-12-13 00:41 - INFO - shape: (5, 10)
+┌───────────────────┬──────────────┬────────────────┬────────────┬───┬───────────────┬───────────────────┬───────────────────┬───────────────────┐
+│ Univerzita        ┆ ERASMUS CODE ┆ Město          ┆ Stát       ┆ … ┆ Obory         ┆ URL               ┆ Longitude         ┆ Latitude          │
+│ ---               ┆ ---          ┆ ---            ┆ ---        ┆   ┆ ---           ┆ ---               ┆ ---               ┆ ---               │
+│ str               ┆ str          ┆ str            ┆ str        ┆   ┆ str           ┆ str               ┆ str               ┆ str               │
+╞═══════════════════╪══════════════╪════════════════╪════════════╪═══╪═══════════════╪═══════════════════╪═══════════════════╪═══════════════════╡
+│ SVEUCILISTE       ┆ HR ZAGREB11  ┆ ZAGREB         ┆ Chorvatská ┆ … ┆ Informační a  ┆ https://www.algeb ┆ 15.94111290121649 ┆ 45.81051270000000 │
+│ ALGEBRA           ┆              ┆                ┆ republika  ┆   ┆ komunikační   ┆ ra.hr             ┆ 4                 ┆ 4                 │
+│                   ┆              ┆                ┆            ┆   ┆ techn…        ┆                   ┆                   ┆                   │
+│ RHEINLAND-PFALZIS ┆ D  KAISERS01 ┆ Kaiserslautern ┆ Spolková   ┆ … ┆ Fyzika        ┆ https://rptu.de/  ┆ 7.754214153273509 ┆ 49.4246142        │
+│ CHE TECHNISCH…    ┆              ┆                ┆ republika  ┆   ┆               ┆                   ┆                   ┆                   │
+│                   ┆              ┆                ┆ Německo    ┆   ┆               ┆                   ┆                   ┆                   │
+│ UNIVERSITATEA DE  ┆ RO TIMISOA01 ┆ Timisoara      ┆ Rumunsko   ┆ … ┆ Biologické a  ┆ https://www.uvt.r ┆ 21.23126099621941 ┆ 45.74732925       │
+│ VEST DIN TIMI…    ┆              ┆                ┆            ┆   ┆ příbuzné vědy ┆ o                 ┆                   ┆                   │
+│ UNIVERSITATEA DE  ┆ RO TIMISOA01 ┆ Timisoara      ┆ Rumunsko   ┆ … ┆ Vědy o Zemi   ┆ https://www.uvt.r ┆ 21.23126099621941 ┆ 45.74732925       │
+│ VEST DIN TIMI…    ┆              ┆                ┆            ┆   ┆               ┆ o                 ┆                   ┆                   │
+│ UNIVERSITATEA DE  ┆ RO TIMISOA01 ┆ Timisoara      ┆ Rumunsko   ┆ … ┆ Informační a  ┆ https://www.uvt.r ┆ 21.23126099621941 ┆ 45.74732925       │
+│ VEST DIN TIMI…    ┆              ┆                ┆            ┆   ┆ komunikační   ┆ o                 ┆                   ┆                   │
+│                   ┆              ┆                ┆            ┆   ┆ techn…        ┆                   ┆                   ┆                   │
+└───────────────────┴──────────────┴────────────────┴────────────┴───┴───────────────┴───────────────────┴───────────────────┴───────────────────┘
+2024-12-13 00:41 - INFO - ['Univerzita', 'ERASMUS CODE', 'Město', 'Stát', 'Katedry', 'Obor', 'Obory', 'URL', 'Longitude', 'Latitude']
+2024-12-13 00:41 - INFO - Done!

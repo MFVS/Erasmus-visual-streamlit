@@ -44,29 +44,33 @@ def fetch_csv(service:str = "",ticket:str = "", params_plus:dict = {}, auth:Tupl
 def getColumnTrans() -> Dict[str, str]:
     return {
         #"ciziSkolaNazev":"Univerzita",
-        "ciziSkolaZkratka":"ERASMUS CODE",
-        "ciziSkolaMesto":"Město",
-        "ciziSkolaStatNazev":"Stát",
+        "Erasmus kód":"ERASMUS CODE",
+        "Město":"Město",
+        "Stá":"Stát",
         "kodyIscedUvedeneUDomacichPodmSml":"Obor",
-        "interniNazevSmlouvy":"Fullname"
+        "Interní název smlouvy (Erasmus kód + katedry)":"Fullname"
     }
 
 # Funkce sjednoducíjící jména načítané a ukláadané tabulky
 def unite_cols(new_schools:pl.DataFrame, name_gen:pl.DataFrame) -> pl.DataFrame:
     column_translator:Dict[str, str] = getColumnTrans()
     shady_stuff:List[str] = ["Univerzita"] + list(column_translator.values())
-    return new_schools.drop("ciziSkolaNazev").rename(column_translator).join(name_gen, "ERASMUS CODE", "left").select(shady_stuff)
+    return new_schools.drop("Název univerzity").rename(column_translator).join(name_gen, "ERASMUS CODE", "left").select(shady_stuff)
 
 # Funkce která získá katedry
-def extract_dptmnts(new_schools:pl.DataFrame) -> pl.DataFrame:
+def extract_dptmnts(new_schools:pl.DataFrame, faculty:str) -> pl.DataFrame:
     #test = new_schools.get_column("Fullname").str.strip_chars().str.split(",").slice("").list.join(",")
     #log.info(test.to_list())
     #log.info(new_schools.get_column("Fullname").to_list())
     dptmnts = pl.read_csv(fetch_csv(service="/ciselniky/getSeznamPracovist", params_plus={
         "typPracoviste":"K",
         "zkratka":"%",
-        "nadrazenePracoviste":"PRF"
-    })).filter(pl.col("nazev").str.contains("[Kk]atedra")).get_column("zkratka").to_list()
+        "nadrazenePracoviste":faculty
+    }), separator=";")
+    log.info(dptmnts.head())
+    
+    dptmnts = dptmnts.filter(pl.col("nazev").str.contains("[Kk]atedra")).get_column("zkratka").to_list()
+    dpts_string = ", ".join(dptmnts)
 
     new_schools = new_schools.filter(pl.col("Fullname") != "STORNO").with_columns(pl.col("Fullname").str.replace_all(" ", "").str.split(",").list.slice(offset=1).alias("Katedry")).drop("Fullname")
     log.info(new_schools.head())
@@ -75,9 +79,10 @@ def extract_dptmnts(new_schools:pl.DataFrame) -> pl.DataFrame:
     new_schools = new_schools.unique("ERASMUS CODE").drop("Katedry").join(dpts, "ERASMUS CODE", "left").with_columns(pl.col("Katedry").list.join(", ").name.keep())
 
     #return new_schools.with_columns(pl.col("Katedry").list.join(", ").name.keep())
-    return new_schools.with_columns(pl.when(pl.col("Katedry") == "všechny katedry").then(dptmnts).otherwise(pl.col("Katedry").name.keep()))
+    return new_schools.with_columns(pl.when(pl.col("Katedry") == "všechnykatedry").then(pl.lit(dpts_string)).otherwise(pl.col("Katedry")).name.keep())
 
 # Funkce která předělává čísla oborů na jména
+# DEPRECATED
 def rename_subs(new_schools:pl.DataFrame) -> pl.DataFrame:
     # Tabulka se jmény oborů
     code_trans = pl.read_excel("cz_isced_f_systematicka_cast.xlsx")
@@ -171,7 +176,7 @@ def get_coords(new_schools:pl.DataFrame, address_source:pl.DataFrame) -> pl.Data
         #log.info(f"{loc} - {reloc_info}")
     return new_schools.join(pl.from_dict(df_maker), "ERASMUS CODE", "left")
 
-def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a následně vrátí počet řádků s nevalidními koordinacemi
+def table_overwriter(excel_file, fac) -> int: # Funkce zapíše všechno do souboru a následně vrátí počet řádků s nevalidními koordinacemi
     # Načítání
     current_schools = pl.DataFrame()
     if not os.path.exists("schools.xlsx"):
@@ -199,7 +204,7 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
     log.info(new_schools.filter((pl.col("ERASMUS CODE") == "BG ROUSSE01") | (pl.col("ERASMUS CODE") == "E JAEN01")).head())
 
     # Přidání kateder
-    new_schools = extract_dptmnts(new_schools)
+    new_schools = extract_dptmnts(new_schools, fac)
     log.info("Departments extracted.")
     log.info(new_schools.filter((pl.col("ERASMUS CODE") == "BG ROUSSE01") | (pl.col("ERASMUS CODE") == "E JAEN01")).head(15))
 
@@ -222,7 +227,8 @@ def table_overwriter(excel_file) -> int: # Funkce zapíše všechno do souboru a
 
     # Mergování a zápis
     #current_schools = current_schools.drop("Longitude", "Latitude")
-    new_schools = new_schools.insert_column(1, pl.Series("Fakulta",["PřF"] * new_schools.__len__(),dtype=pl.String))
+    new_schools = new_schools.insert_column(1, pl.Series("Fakulta",[fac] * new_schools.__len__(),dtype=pl.String))
+    #TODO: Přidat funkcionalitu která mergene fakulty pro stejné školy
     new_schools = new_schools.select(current_schools.columns)
     current_schools.join(new_schools, "ERASMUS CODE", "anti").vstack(new_schools, in_place=True).write_excel("schools.xlsx")
     log.info("Done!")
@@ -270,5 +276,6 @@ def table_eraser(excel_file) -> int:
     
 
 if __name__ == "__main__":
-    table_overwriter(easygui.fileopenbox("Vyberte soubor s novými školami: ", "Hi", filetypes="*.xlsx"))
+    faculty = easygui.enterbox("Zadejte fakultu pod kterou přidat")
+    table_overwriter(easygui.fileopenbox("Vyberte soubor s novými školami: ", "Hi", filetypes="*.xlsx"), fac=faculty)
     #table_eraser(easygui.fileopenbox("Vyberte soubor obsahující školy k vymazání.", filetypes=["*.xlsx", "*.txt"]))
