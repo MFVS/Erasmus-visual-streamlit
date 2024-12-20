@@ -7,7 +7,7 @@ from typing import Dict #, List
 
 #st.set_page_config(layout="wide")
 
-schools_source = pl.read_excel("schools.xlsx")
+schools_source = pl.read_excel("schools.xlsx").with_columns(pl.col("Katedry").str.split(", ").name.keep())
 filter_targets = ["Katedry", "Fakulta", "Univerzita", "Obory", "Stát"] # Mělo by reflektovat všechny potenciální filtrované sloupečky
 display_targets = ["Katedry", "Fakulta", "Univerzita", "Obor", "Obory", "Stát", "URL"]
 
@@ -15,6 +15,11 @@ display_targets = ["Katedry", "Fakulta", "Univerzita", "Obor", "Obory", "Stát",
 schools:pl.DataFrame = schools_source.select(filter_targets) # Schools je subtabulka sloužící k filtrování a jiným sussy operacím. Asi tady deklarována zbytečně vysoko.
 picks:Dict[str, pl.Series] = schools.to_dict() # Dictionary s filtrovacími klíčovými slovíčky pro každý sloupeček
 for column in picks.keys():
+    print(column)
+    if column == "Katedry":
+        temp = picks[column].list.explode().unique()
+        print(f"Hello {temp.dtype}")
+        picks[column] = temp
     picks[column] = ["---"]  + picks[column].unique().sort(nulls_last=True).to_list()
 
 def filter_schools(school_df:pl.DataFrame) -> pl.DataFrame:
@@ -27,6 +32,10 @@ def filter_schools(school_df:pl.DataFrame) -> pl.DataFrame:
             continue
 
         if len(st.session_state[column]) > 0:
+            if column == "Katedry":
+                print(f"{column} - {filtered.select(column).dtypes}/{st.session_state[column]}")
+                filter_choice.append(pl.col(column).list.eval(pl.element().is_in(st.session_state[column])).list.any())
+                continue
             filter_choice.append(pl.col(column).is_in(st.session_state[column])) 
         
     if len(filter_choice) < 1: # Pokud nejsou žádný podmínky, dej filtru vždycky pravdivou podmínku
