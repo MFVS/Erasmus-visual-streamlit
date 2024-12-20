@@ -34,7 +34,7 @@ Akutální web verze (NEREFLEKTUJE AKTUALIZACE): erasmus-proto.streamlit.app
   - ~~podmínka kód katedry =! STORNO ... zbavit se ukončených smluv~~           [DONE]
   - ~~url ... přidat před každý vygenerovaný odkaz "http://"~~                                [Mělo by to fungovat, ale moc v to důvěru nemám]
  
-  
+- **přidat kód smlouvy do zobrazovaného df!!!!!**
 
 ## Experimentální funkce: Admin tools
 ### Jak se k nim dostat
