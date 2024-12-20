@@ -8,12 +8,8 @@ from typing import Dict #, List
 #st.set_page_config(layout="wide")
 
 schools_source = pl.read_excel("schools.xlsx")
-<<<<<<< HEAD
-filter_targets = ["Katedry", "Univerzita", "Obory", "Stát"] # Mělo by reflektovat všechny potenciální filtrované sloupečky
-display_targets = ["Katedry", "Univerzita", "Obor", "Obory", "Stát", "URL"]
-=======
-filter_targets = ["Fakulta","Univerzita", "Obory", "Stát"] # Mělo by reflektovat všechny potenciální filtrované sloupečky
->>>>>>> 13fdfc1e9f92123fc182a0a93193c6cc4559d8d9
+filter_targets = ["Katedry", "Fakulta", "Univerzita", "Obory", "Stát"] # Mělo by reflektovat všechny potenciální filtrované sloupečky
+display_targets = ["Katedry", "Fakulta", "Univerzita", "Obor", "Obory", "Stát", "URL"]
 
 #TODO: Obecně hodně těhle deklarací je sketch. Trochu se na to kouknout a optimalizovat.
 schools:pl.DataFrame = schools_source.select(filter_targets) # Schools je subtabulka sloužící k filtrování a jiným sussy operacím. Asi tady deklarována zbytečně vysoko.
