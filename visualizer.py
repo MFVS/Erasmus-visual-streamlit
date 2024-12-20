@@ -8,7 +8,7 @@ from typing import Dict #, List
 #st.set_page_config(layout="wide")
 
 schools_source = pl.read_excel("schools.xlsx")
-filter_targets = ["Fakulta","Katedry",  "Univerzita", "Obory", "Stát"] # Mělo by reflektovat všechny potenciální filtrované sloupečky
+filter_targets = ["Fakulta","Katedry", "Obory", "Stát"] # Mělo by reflektovat všechny potenciální filtrované sloupečky
 display_targets = ["Fakulta","Katedry",  "Univerzita", "Obor", "Obory", "Stát", "URL", "ERASMUS CODE"]
 
 #TODO: Obecně hodně těhle deklarací je sketch. Trochu se na to kouknout a optimalizovat.
