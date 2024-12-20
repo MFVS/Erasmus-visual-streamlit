@@ -130,6 +130,19 @@ def rename_subs_hard(new_schools:pl.DataFrame, old_schools:pl.DataFrame) -> pl.D
     return new_schools.unique("ERASMUS CODE").join(mediator, "ERASMUS CODE", "left").drop("Obor").rename({"Kódy oborů":"Obor"})
 
 
+def rozdel_katedry(new_schools: pl.DataFrame) -> pl.DataFrame:
+    if "Katedry" not in new_schools.columns:
+        raise ValueError("Sloupec 'Katedry' nebyl nalezen v tabulce.")
+    upravena_tabulka = (
+        new_schools
+        .with_columns(
+            new_schools["Katedry"]
+            .str.replace(" ", "") 
+            .str.split(","))   
+        .explode("Katedry"))
+    return upravena_tabulka
+
+
 # Funkce která přidává url
 def get_url(new_schools:pl.DataFrame, url_source:pl.DataFrame) -> pl.DataFrame:
     return new_schools.join(url_source, "ERASMUS CODE", "left").with_columns(

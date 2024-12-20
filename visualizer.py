@@ -120,10 +120,10 @@ coords = zip(
 # Iterace a zapsání do mapy
 for coord in coords:
     fakulta = coord[0]
-    color = category_colors.get(fakulta, "blue")
+    color = category_colors.get(fakulta, "pink")
     
     # Vytvoření popisu s názvem univerzity a URL
-    popup_content = f"<strong>{coord[0]}</strong><br><a href='{coord[4]}' target='_blank'>{coord[4]}</a>"
+    popup_content = f"<strong>{coord[1]}</strong><br><a href='{coord[5]}' target='_blank'>{coord[5]}</a>"
     
     fo.Marker(
         location=[coord[2], coord[3]],
